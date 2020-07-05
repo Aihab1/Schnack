@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schnack</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Liberate your communication</h1>
+    <p>Whether you’re part of a school club, gaming group, or just a handful of college friends who want to spend time together, Schnack makes it easy to chat every day and hang out more often.</p>
+    <form action="{{ url_for('lobby_redirect') }}" method="POST">
+        <input type="text" maxlength="15" name="username" spellcheck="false" placeholder="Enter a username" autocomplete="off" required>
+        <button type="submit">Start</button>
+    </form>
+    <h1>Rooms with plenty of space to talk</h1>
+    <p>Conversations happen in dedicated rooms where you can talk about your day without clogging up a group chat.</p>
+    <h1>Where hanging out is easy</h1>
+    <p>Grab a seat in a public chatroom when you’re free. You may well make friends without much effort.</p>
+    <h1>An invite-only place to spread the word</h1>
+    <p>Rumour has it that our private chatrooms serve as the best place for all the gossip!</p>
+</body>
+</html>
