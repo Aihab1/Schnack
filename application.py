@@ -18,26 +18,34 @@ Session(app)
 messages = []
 users = []
 
+
 @app.route("/")
 def index():
     if 'username' in session:
-        return redirect(url_for('lobby'));
-    return render_template("index.html");
+        return redirect(url_for('lobby'))
+    return render_template("index.html")
+
 
 @app.route("/lobby")
 def lobby():
     if 'username' in session:
-        return render_template("lobby.html", username = session['username'], messages=messages)
+        now = datetime.now()
+        today = datetime.now().date()
+        time = now.strftime("%H:%M")
+        date = today.strftime('%d%m%Y%b')
+
+        return render_template("lobby.html", username=session['username'], messages=messages, time = time, date = date)
     else:
         return redirect(url_for('index'))
+
 
 @app.route("/lobby_redirect", methods=["GET", "POST"])
 def lobby_redirect():
     if request.method == 'POST':
         username = request.form.get("username")
         if username.lower() not in users:
-            users.append(username.lower());
-            session["username"] = username;
+            users.append(username.lower())
+            session["username"] = username
         else:
             return "Username already taken"
         return redirect(url_for('lobby'))
@@ -45,6 +53,7 @@ def lobby_redirect():
         if 'username' in session:
             return redirect(url_for('lobby'))
         return redirect(url_for('index'))
+
 
 @app.route("/logout")
 def logout():
@@ -55,11 +64,19 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
+
 @socketio.on("submit message")
 def message(data):
-    messages.append((data["msg"], session['username']))
+    now = datetime.now()
+    today = datetime.now().date()
+    time = now.strftime("%H:%M")
+    date = today.strftime('%d%m%Y%b')
+
+    messages.append((data["msg"], session['username'], time, date))
     data = {
         "msg": data["msg"],
-        "username": session['username']
+        "username": session['username'],
+        "time": time,
+        "date": date
     }
     emit("announce message", data, broadcast=True)

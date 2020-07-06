@@ -18,7 +18,41 @@
     <button id="send">Send</button>
     <ul id="messages">
         {% for msg in messages %}
-        <li>{{ msg[1] }}: {{ msg[0] }}</li>
+            {% if date == msg[3] %}
+                {% if ((time[0:2]|int - msg[2][0:2]|int)*60 + time[3:5]|int - msg[2][3:5]|int) < 60 %}
+                    <li>
+                        {% if (time[0:2]|int - msg[2][0:2]|int)*60 + time[3:5]|int - msg[2][3:5]|int == 0 %}
+                            <b>{{ msg[1] }}</b> just now: {{ msg[0] }}
+                        {% elif (time[0:2]|int - msg[2][0:2]|int)*60 + time[3:5]|int - msg[2][3:5]|int == 1 %}
+                            <b>{{ msg[1] }}</b> a minute ago: {{ msg[0] }}
+                        {% else %}
+                            <b>{{ msg[1] }}</b> {{ (time[0:2]|int - msg[2][0:2]|int)*60 + time[3:5]|int - msg[2][3:5]|int }} minutes ago: {{ msg[0] }}
+                        {% endif %}
+                    </li>
+                {% else %}
+                    <li>
+                        {% if ((time[0:2]|int - msg[2][0:2]|int)*60 + time[3:5]|int - msg[2][3:5]|int)//60 == 1 %}
+                            <b>{{ msg[1] }}</b> 1 hour ago: {{ msg[0] }}
+                        {% else %}
+                            <b>{{ msg[1] }}</b> {{ ((time[0:2]|int - msg[2][0:2]|int)*60 + time[3:5]|int - msg[2][3:5]|int)//60 }} hours ago: {{ msg[0] }}
+                        {% endif %}
+                    </li>
+                {% endif %}
+            {% else %}
+                {% if ((date[2:4]|int - msg[3][2:4]|int)*31 + date[0:2]|int - msg[3][0:2]|int) <= 31 %}
+                    <li>
+                        {% if  (date[2:4]|int - msg[3][2:4]|int) * 31 + date[0:2]|int - msg[3][0:2]|int == 1 %}
+                            <b>{{ msg[1] }}</b> yesterday: {{ msg[0] }}
+                        {% else %}
+                            <b>{{ msg[1] }}</b> {{ (date[2:4]|int - msg[3][2:4]|int) * 31 + date[0:2]|int - msg[3][0:2]|int }} days ago: {{ msg[0] }}
+                        {% endif %}
+                    </li>
+                {% else %}
+                    <li>
+                        <b>{{ msg[1] }}</b> on {{ msg[3][8:11] }} {{ msg[3][0:2] }} {{ msg[3][4:8] }}: {{ msg[0] }}
+                    </li>
+                {% endif %}
+            {% endif %}
         {% endfor %}
     </ul>
 </body>

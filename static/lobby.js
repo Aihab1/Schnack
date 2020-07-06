@@ -7,16 +7,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Each button should emit a "submit message" event
         button = document.querySelector('#send')
         input = document.querySelector('#msg')
+
+        input.addEventListener("keyup", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                button.click();
+            }
+        });
+
         button.onclick = () => {
             const msg = input.value;
+            document.querySelector('#msg').value = "";
             socket.emit('submit message', { 'msg': msg });
         };
+        //updating time
+        // setInterval(function(){ 
+        //     $("#messages").load(location.href+" #messages>*","");
+        // }, 60000);
     });
 
     // When a new message is announced, add to the unordered list
     socket.on('announce message', data => {
         const li = document.createElement('li');
-        li.innerHTML = `${data.username}: ${data.msg}`;
+        li.innerHTML = `<b>${data.username}</b> just now: ${data.msg}`;
         document.querySelector('#messages').append(li);
     });
 });
