@@ -5,7 +5,6 @@ from flask_session import Session
 from flask_socketio import SocketIO, emit
 
 from datetime import datetime
-from users import users
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
@@ -16,6 +15,9 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+messages = []
+users = []
+
 @app.route("/")
 def index():
     if 'username' in session:
@@ -25,7 +27,7 @@ def index():
 @app.route("/lobby")
 def lobby():
     if 'username' in session:
-        return render_template("lobby.html", username = session['username'])
+        return render_template("lobby.html", username = session['username'], messages=messages)
     else:
         return redirect(url_for('index'))
 
@@ -46,6 +48,18 @@ def lobby_redirect():
 
 @app.route("/logout")
 def logout():
-    users.remove(session['username'].lower())
+    try:
+        users.remove(session['username'].lower())
+    except:
+        pass
     session.pop('username', None)
     return redirect(url_for('index'))
+
+@socketio.on("submit message")
+def message(data):
+    messages.append((data["msg"], session['username']))
+    data = {
+        "msg": data["msg"],
+        "username": session['username']
+    }
+    emit("announce message", data, broadcast=True)
