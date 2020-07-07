@@ -32,6 +32,9 @@ def lobby():
         today = datetime.now().date()
         date = today.strftime('%d%m%Y%b')
 
+        if "home" not in messages:
+            messages["home"] = []
+
         return render_template("lobby.html", username=session['username'], messages=messages, date = date)
     else:
         return redirect(url_for('index'))
@@ -81,3 +84,13 @@ def message(data):
         "date": date
     }
     emit("announce message", data, broadcast=True)
+
+@socketio.on("submit chatroom")
+def chatroom(data):
+    if str(data["namechatroom"]) not in messages:
+        messages[str(data["namechatroom"])] = []
+    
+    data = {
+        "namechatroom": data["namechatroom"]
+    }
+    emit("announce chatroom", data, broadcast=True)

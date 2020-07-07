@@ -25,6 +25,9 @@
     <br>
     <h2>Active Chatrooms</h2>
     <div id="activechatrooms">
+        {% for key in messages %}
+        <a href="#">{{key}}</a>
+        {% endfor %}
     </div>
     <br>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">

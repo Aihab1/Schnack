@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#msg').value = "";
             socket.emit('submit message', { 'msg': msg });
         };
+
     });
 
     // When a new message is announced, add to the unordered list
@@ -43,12 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
     createchatroom = document.querySelector('#create');
     createchatroom.onclick = () => {
         namechatroom = document.querySelector('#namechatroom').value;
+        socket.emit('submit chatroom', { 'namechatroom': namechatroom });
+    };
+    
+    socket.on('announce chatroom', data => {
         const a = document.createElement('a');
-        a.innerHTML = namechatroom;
+        a.innerHTML = `${data.namechatroom}`;
         a.href = "#";
         document.querySelector('#activechatrooms').append(a);
         document.querySelector('#namechatroom').value = "";
-    }
+    });
 });
 
 // Update text on popping state.
