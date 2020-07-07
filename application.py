@@ -29,12 +29,10 @@ def index():
 @app.route("/lobby")
 def lobby():
     if 'username' in session:
-        now = datetime.now()
         today = datetime.now().date()
-        time = now.strftime("%H:%M")
         date = today.strftime('%d%m%Y%b')
 
-        return render_template("lobby.html", username=session['username'], messages=messages, time = time, date = date)
+        return render_template("lobby.html", username=session['username'], messages=messages, date = date)
     else:
         return redirect(url_for('index'))
 

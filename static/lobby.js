@@ -21,16 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#msg').value = "";
             socket.emit('submit message', { 'msg': msg });
         };
-        //updating time
-        // setInterval(function(){ 
-        //     $("#messages").load(location.href+" #messages>*","");
-        // }, 60000);
     });
 
     // When a new message is announced, add to the unordered list
     socket.on('announce message', data => {
         const li = document.createElement('li');
-        li.innerHTML = `<b>${data.username}</b> just now: ${data.msg}`;
+        li.innerHTML = `<b>${data.username}</b> Today at ${data.time}: ${data.msg}`;
         document.querySelector('#messages').append(li);
     });
 });
