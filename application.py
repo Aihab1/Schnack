@@ -15,7 +15,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-messages = []
+messages = {}
 users = []
 
 
@@ -69,8 +69,11 @@ def message(data):
     today = datetime.now().date()
     time = now.strftime("%H:%M")
     date = today.strftime('%d%m%Y%b')
+    
+    if "home" not in messages:
+        messages["home"] = []
+    messages["home"].append((data["msg"], session['username'], time, date))
 
-    messages.append((data["msg"], session['username'], time, date))
     data = {
         "msg": data["msg"],
         "username": session['username'],

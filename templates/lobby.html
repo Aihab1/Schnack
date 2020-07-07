@@ -23,6 +23,9 @@
     <h1>Hello {{ username }}</h1>
     <a href="{{ url_for('logout') }}">Log out</a>
     <br>
+    <h2>Active Chatrooms</h2>
+    <div id="activechatrooms">
+    </div>
     <br>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
         Add a Chatroom
@@ -40,11 +43,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h6>Chatroom Name</h6>
-                    <input type="text" placeholder="{{username|capitalize}}'s Chatroom">
+                    <h6>Name</h6>
+                    <input type="text" id="namechatroom" placeholder="{{username|capitalize}}'s Chatroom" autocomplete="off">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+                    <button type="button" class="btn btn-primary" id="create" data-dismiss="modal">Create</button>
                 </div>
             </div>
         </div>
@@ -54,8 +57,8 @@
     <input id="msg">
     <button id="send">Send</button>
     <ul id="messages">
-        {% for msg in messages %}
-        {% if  date == msg[3] %}
+        {% for msg in messages["home"] %}
+        {% if date == msg[3] %}
         <li>
             <b>{{ msg[1] }}</b> Today at {{ msg[2] }}: {{ msg[0] }}
         </li>
