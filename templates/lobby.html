@@ -25,7 +25,7 @@
     <br>
     <h2>Active Chatrooms</h2>
     <div id="activechatrooms">
-        {% for key in messages %}
+        {% for key in messages["1"] %}
         <a href="#" class="chatroom-links">{{key}}</a>
         {% endfor %}
     </div>
@@ -47,7 +47,8 @@
                 </div>
                 <div class="modal-body">
                     <h6>Name</h6>
-                    <input type="text" id="namechatroom" placeholder="{{username|capitalize}}'s Chatroom" autocomplete="off">
+                    <input type="text" id="namechatroom" placeholder="{{username|capitalize}}'s Chatroom"
+                        autocomplete="off">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="create" data-dismiss="modal">Create</button>
@@ -60,21 +61,7 @@
     <input id="msg">
     <button id="send">Send</button>
     <ul id="messages">
-        {% for msg in messages["home"] %}
-        {% if date == msg[3] %}
-        <li>
-            <b>{{ msg[1] }}</b> Today at {{ msg[2] }}: {{ msg[0] }}
-        </li>
-        {% elif (date[0:2]|int - msg[3][0:2]|int) == 1 %}
-        <li>
-            <b>{{ msg[1] }}</b> Yesterday at {{ msg[2] }}: {{ msg[0] }}
-        </li>
-        {% else %}
-        <li>
-            <b>{{ msg[1] }}</b> on {{ msg[3][8:11] }} {{ msg[3][0:2] }} {{ msg[3][4:8] }} at {{ msg[2] }}: {{ msg[0] }}
-        </li>
-        {% endif %}
-        {% endfor %}
+        
     </ul>
 </body>
 

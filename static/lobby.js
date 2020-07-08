@@ -1,19 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    //load home lobby
+    load_page("home");
+
+    //button disable enable functioning
     document.querySelector('#send').disabled = true;
     document.querySelector('#msg').onkeyup = () => {
         if (document.querySelector('#msg').value.length > 0)
-        document.querySelector('#send').disabled = false;
+            document.querySelector('#send').disabled = false;
         else
-        document.querySelector('#send').disabled = true;
+            document.querySelector('#send').disabled = true;
     };
+
     // Set links up to load new pages.
-    // document.querySelectorAll('.nav-link').forEach(link => {
-    //     link.onclick = () => {
-    //         const page = link.dataset.page;
-    //         load_page(page);
-    //         return false;
-    //     };
-    // });
+    document.querySelectorAll('.chatroom-links').forEach(link => {
+        link.onclick = () => {
+            const page = link.innerHTML;
+            load_page(page);
+            return false;
+        };
+    });
 
     // Connect to websocket
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
@@ -71,17 +76,22 @@ document.addEventListener('DOMContentLoaded', () => {
 //     document.querySelector('#body').innerHTML = data.text;
 // };
 
-// // Renders contents of new page in main view.
-// function load_page(name) {
-//     const request = new XMLHttpRequest();
-//     request.open('GET', `/${name}`);
-//     request.onload = () => {
-//         const response = request.responseText;
-//         document.querySelector('#body').innerHTML = response;
+// Renders contents of new page in main view.
+function load_page(name) {
+    const request = new XMLHttpRequest();
+    request.open('GET', `/lobby/${name}`);
+    request.onload = () => {
+        const data_temp = JSON.parse(request.response);
+        console.log(data_temp);
+        data_list = data_temp["home"]
 
-//         // Push state to URL.
-//         document.title = name;
-//         history.pushState({'title': name, 'text': response}, name, name);
-//     };
-//     request.send();
-// }
+        data_list.forEach(data => {
+            const li = document.createElement('li');
+            li.innerHTML = `<b>${data.username}</b> Today at ${data.time}: ${data.message}`;
+            document.querySelector('#messages').append(li);
+        });
+        // Push state to URL.
+        document.title = name;
+    };
+    request.send();
+}
