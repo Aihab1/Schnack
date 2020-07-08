@@ -1,3 +1,9 @@
+function remove_spaces(string) {
+    var processed = string.replace(/ /g, '');
+    return processed;
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     //load home lobby
     load_page("home");
@@ -14,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set links up to load new pages.
     document.querySelectorAll('.chatroom-links').forEach(link => {
         link.onclick = () => {
-            const page = link.innerHTML;
+            var page = link.innerHTML;
             load_page(page);
             return false;
         };
@@ -63,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const a = document.createElement('a');
         a.innerHTML = `${data.namechatroom}`;
         a.href = "#";
-        a.setAttribute("class", "chatroom-links");
+        a.setAttribute('class', 'chatroom-links');
         document.querySelector('#activechatrooms').append(a);
         document.querySelector('#namechatroom').value = "";
     });
@@ -78,20 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Renders contents of new page in main view.
 function load_page(name) {
+    // name = remove_spaces(name);
     const request = new XMLHttpRequest();
     request.open('GET', `/lobby/${name}`);
     request.onload = () => {
         const data_temp = JSON.parse(request.response);
         console.log(data_temp);
-        data_list = data_temp["home"]
+        // data_list = data_temp["home"]
+        document.querySelector('#messages').innerHTML="";
 
-        data_list.forEach(data => {
+        data_temp.forEach(data => {
             const li = document.createElement('li');
             li.innerHTML = `<b>${data.username}</b> Today at ${data.time}: ${data.message}`;
             document.querySelector('#messages').append(li);
         });
         // Push state to URL.
         document.title = name;
+        history.pushState({'title': name, 'text': data_temp}, name, `/lobby/${name}`);
     };
     request.send();
 }

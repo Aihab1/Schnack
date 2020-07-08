@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, session, render_template, redirect, url_for, request
+from flask import Flask, session, render_template, redirect, url_for, request, jsonify
 from flask_session import Session
 from flask_socketio import SocketIO, emit
 
@@ -17,7 +17,7 @@ Session(app)
 
 messages = {"1":{}}
 users = []
-
+chatrooms = []
 
 @app.route("/")
 def index():
@@ -97,4 +97,8 @@ def chatroom(data):
 
 @app.route("/lobby/home")
 def home():
-    return messages["1"]
+    return jsonify(messages["1"]["home"])
+
+@app.route("/lobby/<name>")
+def chatroom(name):
+    return jsonify(messages["1"][name])
