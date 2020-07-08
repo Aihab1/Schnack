@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    document.querySelector('#send').disabled = true;
+    document.querySelector('#msg').onkeyup = () => {
+        if (document.querySelector('#msg').value.length > 0)
+        document.querySelector('#send').disabled = false;
+        else
+        document.querySelector('#send').disabled = true;
+    };
     // Set links up to load new pages.
     // document.querySelectorAll('.nav-link').forEach(link => {
     //     link.onclick = () => {
@@ -28,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.onclick = () => {
             const msg = input.value;
             document.querySelector('#msg').value = "";
+            document.querySelector('#send').disabled = true;
             socket.emit('submit message', { 'msg': msg });
         };
 
@@ -46,11 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         namechatroom = document.querySelector('#namechatroom').value;
         socket.emit('submit chatroom', { 'namechatroom': namechatroom });
     };
-    
+
     socket.on('announce chatroom', data => {
         const a = document.createElement('a');
         a.innerHTML = `${data.namechatroom}`;
         a.href = "#";
+        a.setAttribute("class", "chatroom-links");
         document.querySelector('#activechatrooms').append(a);
         document.querySelector('#namechatroom').value = "";
     });
