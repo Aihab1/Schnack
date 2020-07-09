@@ -15,7 +15,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-messages = {"1":{}}
+messages = {}
 users = []
 chatrooms = []
 
@@ -32,8 +32,8 @@ def lobby():
         today = datetime.now().date()
         date = today.strftime('%d%m%Y%b')
 
-        if "home" not in messages["1"]:
-            messages["1"]["home"] = []
+        if "home" not in messages:
+            messages["home"] = []
 
         return render_template("lobby.html", username=session['username'], messages=messages, date=date)
     else:
@@ -73,9 +73,9 @@ def message(data):
     time = now.strftime("%H:%M")
     date = today.strftime('%d%m%Y%b')
     
-    if "home" not in messages["1"]:
-        messages["1"]["home"] = []
-    messages["1"]["home"].append({"message": data["msg"], "username": session['username'], "time":time, "date":date})
+    if "home" not in messages:
+        messages["home"] = []
+    messages["home"].append({"message": data["msg"], "username": session['username'], "time":time, "date":date})
 
     data = {
         "msg": data["msg"],
@@ -87,8 +87,8 @@ def message(data):
 
 @socketio.on("submit chatroom")
 def chatroom(data):
-    if str(data["namechatroom"]) not in messages["1"]:
-        messages["1"][str(data["namechatroom"])] = []
+    if str(data["namechatroom"]) not in messages:
+        messages[str(data["namechatroom"])] = []
     
     data = {
         "namechatroom": data["namechatroom"]
@@ -97,8 +97,8 @@ def chatroom(data):
 
 @app.route("/lobby/home")
 def home():
-    return jsonify(messages["1"]["home"])
+    return jsonify(messages["home"])
 
 @app.route("/lobby/<name>")
 def chatroom(name):
-    return jsonify(messages["1"][name])
+    return jsonify(messages[name])

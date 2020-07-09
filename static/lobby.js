@@ -72,15 +72,29 @@ document.addEventListener('DOMContentLoaded', () => {
         a.setAttribute('class', 'chatroom-links');
         document.querySelector('#activechatrooms').append(a);
         document.querySelector('#namechatroom').value = "";
+
+        document.querySelectorAll('.chatroom-links').forEach(link => {
+            link.onclick = () => {
+                var page = link.innerHTML;
+                load_page(page);
+                return false;
+            };
+        });
     });
 });
 
 // Update text on popping state.
-// window.onpopstate = e => {
-//     const data = e.state;
-//     document.title = data.title;
-//     document.querySelector('#body').innerHTML = data.text;
-// };
+window.onpopstate = e => {
+    const data = e.state;
+    document.title = data.title;
+    data_temp = data.text;
+    document.querySelector('#messages').innerHTML="";
+    data_temp.forEach(data => {
+        const li = document.createElement('li');
+        li.innerHTML = `<b>${data.username}</b> Today at ${data.time}: ${data.message}`;
+        document.querySelector('#messages').append(li);
+    });
+};
 
 // Renders contents of new page in main view.
 function load_page(name) {
