@@ -44,9 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         button.onclick = () => {
             const msg = input.value;
+            const namechatroom = document.title;
             document.querySelector('#msg').value = "";
             document.querySelector('#send').disabled = true;
-            socket.emit('submit message', { 'msg': msg });
+            socket.emit('submit message', { 'msg': msg, "namechatroom": namechatroom });
         };
 
     });
@@ -58,6 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#messages').append(li);
     });
 
+    //disable enable functioning for create button inside modal
+    document.querySelector('#create').disabled = true;
+    document.querySelector('#namechatroom').onkeyup = () => {
+        if (document.querySelector('#namechatroom').value.length > 0)
+            document.querySelector('#create').disabled = false;
+        else
+            document.querySelector('#create').disabled = true;
+    };
     //creating chatrooms
     createchatroom = document.querySelector('#create');
     createchatroom.onclick = () => {
@@ -103,7 +112,7 @@ function load_page(name) {
     request.open('GET', `/lobby/${name}`);
     request.onload = () => {
         const data_temp = JSON.parse(request.response);
-        console.log(data_temp);
+        // console.log(data_temp);
         // data_list = data_temp["home"]
         document.querySelector('#messages').innerHTML="";
 

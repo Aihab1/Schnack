@@ -73,15 +73,16 @@ def message(data):
     time = now.strftime("%H:%M")
     date = today.strftime('%d%m%Y%b')
     
-    if "home" not in messages:
-        messages["home"] = []
-    messages["home"].append({"message": data["msg"], "username": session['username'], "time":time, "date":date})
+    if data["namechatroom"] not in messages:
+        messages[data["namechatroom"]] = []
+    messages[data["namechatroom"]].append({"message": data["msg"], "username": session['username'], "time":time, "date":date})
 
     data = {
         "msg": data["msg"],
         "username": session['username'],
         "time": time,
-        "date": date
+        "date": date,
+        "namechatroom": data["namechatroom"]
     }
     emit("announce message", data, broadcast=True)
 
