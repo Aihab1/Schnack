@@ -3,10 +3,9 @@ function remove_spaces(string) {
     return processed;
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     //load home lobby
-    load_page("home");
+    // load_page("home");
 
     //button disable enable functioning
     document.querySelector('#send').disabled = true;
@@ -16,11 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
         else
             document.querySelector('#send').disabled = true;
     };
-
+    
     // Set links up to load new pages.
     document.querySelectorAll('.chatroom-links').forEach(link => {
         link.onclick = () => {
             var page = link.innerHTML;
+            socket.emit('leave', { 'room': document.title });
+            socket.emit('join', { 'room': page });
             load_page(page);
             return false;
         };
@@ -47,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const namechatroom = document.title;
             document.querySelector('#msg').value = "";
             document.querySelector('#send').disabled = true;
-            socket.emit('submit message', { 'msg': msg, "namechatroom": namechatroom });
+            if (namechatroom != "Lobby") {
+                socket.emit('submit message', { 'msg': msg, "namechatroom": namechatroom });
+            }
         };
 
     });
@@ -85,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.chatroom-links').forEach(link => {
             link.onclick = () => {
                 var page = link.innerHTML;
+                socket.emit('leave', { 'room': document.title });
+                socket.emit('join', { 'room': page });
                 load_page(page);
                 return false;
             };
@@ -97,7 +102,7 @@ window.onpopstate = e => {
     const data = e.state;
     document.title = data.title;
     data_temp = data.text;
-    document.querySelector('#messages').innerHTML="";
+    document.querySelector('#messages').innerHTML = "";
     data_temp.forEach(data => {
         const li = document.createElement('li');
         li.innerHTML = `<b>${data.username}</b> Today at ${data.time}: ${data.message}`;
@@ -107,14 +112,13 @@ window.onpopstate = e => {
 
 // Renders contents of new page in main view.
 function load_page(name) {
-    // name = remove_spaces(name);
     const request = new XMLHttpRequest();
     request.open('GET', `/lobby/${name}`);
     request.onload = () => {
         const data_temp = JSON.parse(request.response);
         // console.log(data_temp);
         // data_list = data_temp["home"]
-        document.querySelector('#messages').innerHTML="";
+        document.querySelector('#messages').innerHTML = "";
 
         data_temp.forEach(data => {
             const li = document.createElement('li');
@@ -123,7 +127,8 @@ function load_page(name) {
         });
         // Push state to URL.
         document.title = name;
-        history.pushState({'title': name, 'text': data_temp}, name, `/lobby/${name}`);
+        history.pushState({ 'title': name, 'text': data_temp }, name, `/lobby/${name}`);
     };
     request.send();
+
 }

@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, session, render_template, redirect, url_for, request, jsonify
 from flask_session import Session
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, join_room, leave_room
 
 from datetime import datetime
 
@@ -15,7 +15,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-messages = {}
+messages = {"Lobby": []}
 users = []
 chatrooms = []
 
@@ -84,7 +84,7 @@ def message(data):
         "date": date,
         "namechatroom": data["namechatroom"]
     }
-    emit("announce message", data, broadcast=True)
+    emit("announce message", data, room=data["namechatroom"])
 
 @socketio.on("submit chatroom")
 def chatroom(data):
@@ -103,3 +103,17 @@ def home():
 @app.route("/lobby/<name>")
 def chatroom(name):
     return jsonify(messages[name])
+
+@socketio.on('join')
+def on_join(data):
+    username = session['username']
+    room = data['room']
+    join_room(room)
+    # send(username + ' has entered the room.', room=room)
+
+@socketio.on('leave')
+def on_leave(data):
+    username = session['username']
+    room = data['room']
+    leave_room(room)
+    # send(username + ' has left the room.', room=room)
