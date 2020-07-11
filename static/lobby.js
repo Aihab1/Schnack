@@ -5,7 +5,7 @@ function remove_spaces(string) {
 
 document.addEventListener('DOMContentLoaded', () => {
     //load home lobby
-    // load_page("home");
+    load_page("home");
 
     //button disable enable functioning
     document.querySelector('#send').disabled = true;
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else
             document.querySelector('#send').disabled = true;
     };
-    
+
     // Set links up to load new pages.
     document.querySelectorAll('.chatroom-links').forEach(link => {
         link.onclick = () => {
@@ -78,12 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     socket.on('announce chatroom', data => {
+        const li = document.createElement('li');
         const a = document.createElement('a');
         a.innerHTML = `${data.namechatroom}`;
-        a.href = "#";
+        a.href = "/";
+        li.setAttribute('class', 'list-unstyled');
         a.setAttribute('class', 'chatroom-links');
-        document.querySelector('#activechatrooms').append(a);
+        a.setAttribute('data-dismiss', 'modal');
+        li.appendChild(a);
+        document.querySelector('#activechatrooms').append(li);
         document.querySelector('#namechatroom').value = "";
+        socket.emit('leave', { 'room': document.title });
+        socket.emit('join', { 'room': data.namechatroom });
+        load_page(data.namechatroom);
 
         document.querySelectorAll('.chatroom-links').forEach(link => {
             link.onclick = () => {

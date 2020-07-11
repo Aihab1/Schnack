@@ -15,7 +15,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-messages = {"Lobby": []}
+messages = {}
 users = []
 chatrooms = []
 
@@ -47,6 +47,7 @@ def lobby_redirect():
         if username.lower() not in users:
             users.append(username.lower())
             session["username"] = username
+            session["chatroom"] = "home"
         else:
             return "Username already taken"
         return redirect(url_for('lobby'))
@@ -60,9 +61,12 @@ def lobby_redirect():
 def logout():
     try:
         users.remove(session['username'].lower())
+        users.remove(session['chatroom'])
     except:
         pass
     session.pop('username', None)
+    session.pop('chatroom', None)
+
     return redirect(url_for('index'))
 
 
@@ -108,6 +112,7 @@ def chatroom(name):
 def on_join(data):
     username = session['username']
     room = data['room']
+    session['chatroom'] = data['room']
     join_room(room)
     # send(username + ' has entered the room.', room=room)
 
@@ -115,5 +120,7 @@ def on_join(data):
 def on_leave(data):
     username = session['username']
     room = data['room']
+    session['chatroom'] = "home"
     leave_room(room)
     # send(username + ' has left the room.', room=room)
+
