@@ -3,9 +3,19 @@ function remove_spaces(string) {
     return processed;
 }
 
+$(document).ready(function () {
+    var socket = io();
+    socket.emit('firstload');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
-    //load home lobby
-    load_page("home");
+    // Connect to websocket
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+
+    socket.on('first loaded', data => {
+        //load lobby which the user last left
+        load_page(data['room']);
+    });
 
     //button disable enable functioning
     document.querySelector('#send').disabled = true;
@@ -27,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    // Connect to websocket
-    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
     // When connected, configure buttons
     socket.on('connect', () => {
         // Each button should emit a "submit message" event

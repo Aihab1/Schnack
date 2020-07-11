@@ -112,6 +112,11 @@ def chatroom(name):
 def on_join(data):
     username = session['username']
     room = data['room']
+    # try:
+    #     users.remove(session['chatroom'])
+    # except:
+    #     pass
+    # session.pop('chatroom', None)
     session['chatroom'] = data['room']
     join_room(room)
     # send(username + ' has entered the room.', room=room)
@@ -120,7 +125,18 @@ def on_join(data):
 def on_leave(data):
     username = session['username']
     room = data['room']
+    # try:
+    #     users.remove(session['chatroom'])
+    # except:
+    #     pass
+    # session.pop('chatroom', None)
     session['chatroom'] = "home"
     leave_room(room)
     # send(username + ' has left the room.', room=room)
 
+@socketio.on('firstload')
+def firstload():
+    username = session['username']
+    room = session['chatroom']
+    join_room(room)
+    emit('first loaded', { "room": room })
