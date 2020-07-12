@@ -99,16 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         socket.emit('leave', { 'room': document.title });
         socket.emit('join', { 'room': data.namechatroom });
         load_page(data.namechatroom);
-
-        document.querySelectorAll('.chatroom-links').forEach(link => {
-            link.onclick = () => {
-                var page = link.innerHTML;
-                socket.emit('leave', { 'room': document.title });
-                socket.emit('join', { 'room': page });
-                load_page(page);
-                return false;
-            };
-        });
     });
 });
 
