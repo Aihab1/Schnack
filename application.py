@@ -17,7 +17,8 @@ Session(app)
 
 messages = {}
 users = []
-chatrooms = []
+#chatrooms will be a dictionary of the form {"username": {"currentroom": VAL, "allrooms": []}}
+chatrooms = {}
 
 @app.route("/")
 def index():
@@ -46,8 +47,8 @@ def lobby_redirect():
         username = request.form.get("username")
         if username.lower() not in users:
             users.append(username.lower())
-            session["username"] = username
-            session["chatroom"] = "home"
+            chatrooms[username.lower()] = {"currentroom": "home", "allrooms": ["home"]}
+            session["username"] = username.lower()
         else:
             return "Username already taken"
         return redirect(url_for('lobby'))
@@ -60,12 +61,14 @@ def lobby_redirect():
 @app.route("/logout")
 def logout():
     try:
-        users.remove(session['username'].lower())
-        users.remove(session['chatroom'])
+        del chatrooms[session['username']]
+    except:
+        pass
+    try:
+        users.remove(session['username'])
     except:
         pass
     session.pop('username', None)
-    session.pop('chatroom', None)
 
     return redirect(url_for('index'))
 
@@ -112,34 +115,22 @@ def chatroom(name):
 def on_join(data):
     username = session['username']
     room = data['room']
-    # try:
-    #     users.remove(session['chatroom'])
-    # except:
-    #     pass
-    # session.pop('chatroom', None)
-    session['chatroom'] = data['room']
+    chatrooms[username]["currentroom"] = room
+    if room not in chatrooms[username]["allrooms"]:
+        chatrooms[username]["allrooms"].append(room)
     join_room(room)
-    # send(username + ' has entered the room.', room=room)
 
 @socketio.on('leave')
 def on_leave(data):
     username = session['username']
     room = data['room']
-    # try:
-    #     users.remove(session['chatroom'])
-    # except:
-    #     pass
-    # session.pop('chatroom', None)
-    session['chatroom'] = "home"
     leave_room(room)
-    # send(username + ' has left the room.', room=room)
 
 @socketio.on('firstload')
 def firstload():
     username = session['username']
-    room = session['chatroom']
-    join_room(room)
-    emit('first loaded', { "room": room })
+    join_room(chatrooms[username]["currentroom"])
+    emit('first loaded', { "room": chatrooms[username]["currentroom"] })
 
 @socketio.on('load chatroom')
 def loadchatroom(data):
