@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createchatroom.onclick = () => {
         namechatroom = document.querySelector('#namechatroom').value;
         socket.emit('submit chatroom', { 'namechatroom': namechatroom });
+        socket.emit('load chatroom', { 'namechatroom': namechatroom })
     };
 
     socket.on('announce chatroom', data => {
@@ -96,6 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
         li.appendChild(a);
         document.querySelector('#activechatrooms').append(li);
         document.querySelector('#namechatroom').value = "";
+
+        // Set links up to load new pages.
+        document.querySelectorAll('.chatroom-links').forEach(link => {
+            link.onclick = () => {
+                var page = link.innerHTML;
+                socket.emit('leave', { 'room': document.title });
+                socket.emit('join', { 'room': page });
+                load_page(page);
+                return false;
+            };
+        });
+    });
+
+    socket.on('load forme', data => {
         socket.emit('leave', { 'room': document.title });
         socket.emit('join', { 'room': data.namechatroom });
         load_page(data.namechatroom);

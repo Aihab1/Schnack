@@ -140,3 +140,10 @@ def firstload():
     room = session['chatroom']
     join_room(room)
     emit('first loaded', { "room": room })
+
+@socketio.on('load chatroom')
+def loadchatroom(data):
+    data = {
+        "namechatroom": data["namechatroom"]
+    }
+    emit("load forme", data, broadcast=False)
