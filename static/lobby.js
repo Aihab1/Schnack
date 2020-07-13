@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // When a new message is announced, add to the unordered list
     socket.on('announce message', data => {
         const li = document.createElement('li');
-        li.innerHTML = `<b>${data.username}</b> Today at ${data.time}: ${data.msg}`;
+        li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.msg}`;
         document.querySelector('#messages').append(li);
     });
 
@@ -125,7 +125,7 @@ window.onpopstate = e => {
     document.querySelector('#messages').innerHTML = "";
     data_temp.forEach(data => {
         const li = document.createElement('li');
-        li.innerHTML = `<b>${data.username}</b> Today at ${data.time}: ${data.message}`;
+        li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.message}`;
         document.querySelector('#messages').append(li);
     });
 };
@@ -142,7 +142,7 @@ function load_page(name) {
 
         data_temp.forEach(data => {
             const li = document.createElement('li');
-            li.innerHTML = `<b>${data.username}</b> Today at ${data.time}: ${data.message}`;
+            li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.message}`;
             document.querySelector('#messages').append(li);
         });
         // Push state to URL.

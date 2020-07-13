@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <h1>Hello {{ username }}</h1>
+    <h1>Hello {{ username|capitalize }}</h1>
     <a href="{{ url_for('logout') }}">Log out</a>
     <br>
     <br>
