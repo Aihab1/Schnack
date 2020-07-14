@@ -36,7 +36,7 @@ def lobby():
         if "home" not in messages:
             messages["home"] = []
 
-        return render_template("lobby.html", username=session['username'], messages=messages, date=date)
+        return render_template("lobby.html", username=session['username'], messages=messages, date=date, mychatrooms = chatrooms[session['username']]["allrooms"])
     else:
         return redirect(url_for('index'))
 
@@ -83,6 +83,9 @@ def message(data):
     if data["namechatroom"] not in messages:
         messages[data["namechatroom"]] = []
     messages[data["namechatroom"]].append({"message": data["msg"], "username": session['username'], "time":time, "date":date})
+
+    if len(messages[data["namechatroom"]]) > 100:
+        messages[data["namechatroom"]].pop(0)
 
     data = {
         "msg": data["msg"],

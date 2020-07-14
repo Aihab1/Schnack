@@ -30,9 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.chatroom-links').forEach(link => {
         link.onclick = () => {
             var page = link.innerHTML;
-            socket.emit('leave', { 'room': document.title });
-            socket.emit('join', { 'room': page });
-            load_page(page);
+            // socket.emit('leave', { 'room': document.title });
+            // socket.emit('join', { 'room': page });
+            socket.emit('load chatroom', { 'namechatroom': page })
+            // load_page(page);
             return false;
         };
     });
@@ -79,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         allchatrooms = document.querySelectorAll('.chatroom-links');
         for (var cat of allchatrooms) {
             // console.log(cat.innerHTML);
-            if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase()) {
+            if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase().trim()) {
                 exists = true;
                 break;
             }
@@ -96,13 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#create').disabled = true;
             document.querySelector('#namechatroom').style.border = "3px solid red";
         }
-        
+
     };
     //creating chatrooms
     createchatroom = document.querySelector('#create');
     createchatroom.onclick = () => {
         let exists = false;
-        namechatroom = document.querySelector('#namechatroom').value;
+        namechatroom = document.querySelector('#namechatroom').value.trim();
         allchatrooms = document.querySelectorAll('.chatroom-links');
         for (var cat of allchatrooms) {
             // console.log(cat.innerHTML);
@@ -149,6 +150,33 @@ document.addEventListener('DOMContentLoaded', () => {
         socket.emit('leave', { 'room': document.title });
         socket.emit('join', { 'room': data.namechatroom });
         load_page(data.namechatroom);
+
+        // mychatrooms = document.querySelector('#mychatrooms');
+        // chatroom = data.namechatroom;
+        // const a = document.createElement('a');
+        // const hr = document.createElement('hr');
+        // a.href="/";
+        // a.className="chatroom-links";
+        // a.innerHTML=chatroom;
+
+        // let exists = false;
+        // allchatrooms = document.querySelectorAll('.chatroom-links');
+        // for (var cat of allchatrooms) {
+        //     // console.log(cat.innerHTML);
+        //     if (cat.innerHTML.toLowerCase() === chatroom.toLowerCase()) {
+        //         exists = true;
+        //         break;
+        //     }
+        //     else {
+        //         exists = false;
+        //     }
+        // }
+
+        // if(exists == false){
+        //     mychatrooms.append(a);
+        //     mychatrooms.append(hr);
+        // }
+
     });
 });
 
