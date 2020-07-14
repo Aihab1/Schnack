@@ -73,17 +73,52 @@ document.addEventListener('DOMContentLoaded', () => {
     //disable enable functioning for create button inside modal
     document.querySelector('#create').disabled = true;
     document.querySelector('#namechatroom').onkeyup = () => {
-        if (document.querySelector('#namechatroom').value.length > 0)
+
+        let exists = false;
+        namechatroom = document.querySelector('#namechatroom').value;
+        allchatrooms = document.querySelectorAll('.chatroom-links');
+        for (var cat of allchatrooms) {
+            // console.log(cat.innerHTML);
+            if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase()) {
+                exists = true;
+                break;
+            }
+            else {
+                exists = false;
+            }
+        }
+
+        if (document.querySelector('#namechatroom').value.length > 0 && exists === false) {
             document.querySelector('#create').disabled = false;
-        else
+            document.querySelector('#namechatroom').style.border = "3px solid green";
+        }
+        else {
             document.querySelector('#create').disabled = true;
+            document.querySelector('#namechatroom').style.border = "3px solid red";
+        }
+        
     };
     //creating chatrooms
     createchatroom = document.querySelector('#create');
     createchatroom.onclick = () => {
+        let exists = false;
         namechatroom = document.querySelector('#namechatroom').value;
-        socket.emit('submit chatroom', { 'namechatroom': namechatroom });
-        socket.emit('load chatroom', { 'namechatroom': namechatroom })
+        allchatrooms = document.querySelectorAll('.chatroom-links');
+        for (var cat of allchatrooms) {
+            // console.log(cat.innerHTML);
+            if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase()) {
+                exists = true;
+                break;
+            }
+            else {
+                exists = false;
+            }
+        }
+        // console.log(exists);
+        if (exists === false) {
+            socket.emit('submit chatroom', { 'namechatroom': namechatroom });
+            socket.emit('load chatroom', { 'namechatroom': namechatroom })
+        }
     };
 
     socket.on('announce chatroom', data => {
