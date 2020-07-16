@@ -114,6 +114,10 @@ def home():
 def chatroom(name):
     return jsonify(messages[name])
 
+@app.route("/iamkira/<name>")
+def reloadingfunction(name):
+    return redirect(url_for('lobby'))
+
 @socketio.on('join')
 def on_join(data):
     username = session['username']

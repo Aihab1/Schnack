@@ -23,11 +23,14 @@
     <h1>Hello {{ username|capitalize }}</h1>
     <a href="{{ url_for('logout') }}">Log out</a>
     <h1>My Chatrooms</h1>
-    <div id="mychatrooms">
-        {% for chatroom in mychatrooms %}
-        <a href="/" class="chatroom-links">{{chatroom}}</a>
-        <hr>
-        {% endfor %}
+    <div>
+        <ul id="mychatrooms">
+            {% for chatroom in mychatrooms %}
+            <li class="list-unstyled">
+                <a href="" class="chatroom-links">{{chatroom}}</a>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
     <br>
     <br>
@@ -50,11 +53,11 @@
                         {% for key in messages %}
                         {% if key == "home" %}
                         <li class="list-unstyled">
-                            <a data-dismiss="modal" href="/" id="home" class="chatroom-links">{{key}}</a>
+                            <a data-dismiss="modal" href="" id="home" class="chatroom-links">{{key}}</a>
                         </li>
                         {% else %}
                         <li class="list-unstyled">
-                            <a data-dismiss="modal" href="/" class="chatroom-links">{{key}}</a>
+                            <a data-dismiss="modal" href="" class="chatroom-links">{{key}}</a>
                         </li>
                         {% endif %}
                         {% endfor %}
@@ -72,8 +75,8 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="createchatroom"
-        aria-labelledby="createchatroom" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" role="dialog" id="createchatroom" aria-labelledby="createchatroom"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">

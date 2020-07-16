@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             socket.emit('leave', { 'room': document.title });
             socket.emit('join', { 'room': page });
             load_page(page);
+            
             // socket.emit('load chatroom', { 'namechatroom': page })
 
             var exists = false;
@@ -51,14 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (exists === false) {
                 var mychatrooms = document.querySelector('#mychatrooms');
                 var a = document.createElement('a');
-                var hr = document.createElement('hr');
-                a.href = '/';
-                a.className = 'chatroom-links';
-                a.innerHTML = page;
-                mychatrooms.append(a);
-                mychatrooms.append(hr);
+                var li = document.createElement('li');
+                    li.className = 'list-unstyled';
+                    a.href = "";
+                    a.className = 'chatroom-links';
+                    a.innerHTML = page;
+                    li.appendChild(a);
+                    mychatrooms.append(li);
                 // return false;
             }
+
+            return false;
         };
     });
 
@@ -150,13 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.innerHTML = `${data.namechatroom}`;
-        a.href = "/";
+        a.href = "";
         li.setAttribute('class', 'list-unstyled');
         a.setAttribute('class', 'chatroom-links');
         a.setAttribute('data-dismiss', 'modal');
         li.appendChild(a);
         document.querySelector('#activechatrooms').append(li);
-        document.querySelector('#namechatroom').value = "";
 
         // Set links up to load new pages.
         document.querySelectorAll('.chatroom-links').forEach(link => {
@@ -182,14 +185,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (exists === false) {
                     var mychatrooms = document.querySelector('#mychatrooms');
                     var a = document.createElement('a');
-                    var hr = document.createElement('hr');
-                    a.href = '/';
+                    var li = document.createElement('li');
+                    li.className = 'list-unstyled';
+                    a.href = "";
                     a.className = 'chatroom-links';
                     a.innerHTML = page;
-                    mychatrooms.append(a);
-                    mychatrooms.append(hr);
+                    li.appendChild(a);
+                    mychatrooms.append(li);
                     // return false;
                 }
+
+                return false;
             };
         });
     });
@@ -198,15 +204,17 @@ document.addEventListener('DOMContentLoaded', () => {
         socket.emit('leave', { 'room': document.title });
         socket.emit('join', { 'room': data.namechatroom });
         load_page(data.namechatroom);
+        document.querySelector('#namechatroom').value = "";
 
         var mychatrooms = document.querySelector('#mychatrooms');
         var a = document.createElement('a');
-        var hr = document.createElement('hr');
-        a.href = '/';
-        a.className = 'chatroom-links';
+        var li = document.createElement('li');
+        li.className="list-unstyled";
+        a.href = "";
+        a.setAttribute('class', 'chatroom-links');
         a.innerHTML = data.namechatroom;
-        mychatrooms.append(a);
-        mychatrooms.append(hr);
+        li.appendChild(a);
+        mychatrooms.append(li);
 
         document.querySelectorAll('.chatroom-links').forEach(link => {
             link.onclick = () => {
@@ -232,14 +240,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (exists === false) {
                     var mychatrooms = document.querySelector('#mychatrooms');
                     var a = document.createElement('a');
-                    var hr = document.createElement('hr');
-                    a.href = '#';
+                    var li = document.createElement('li');
+                    li.className = 'list-unstyled';
+                    a.href = "";
                     a.className = 'chatroom-links';
                     a.innerHTML = page;
-                    mychatrooms.append(a);
-                    mychatrooms.append(hr);
+                    li.appendChild(a);
+                    mychatrooms.append(li);
                     // return false;
                 }
+
+                return false;
             };
         });
 
@@ -276,7 +287,7 @@ function load_page(name) {
         });
         // Push state to URL.
         document.title = name;
-        history.pushState({ 'title': name, 'text': data_temp }, name, `/lobby/${name}`);
+        history.pushState({ 'title': name, 'text': data_temp }, name, `/iamkira/${name}`);
     };
     request.send();
     return false;
