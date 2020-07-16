@@ -30,11 +30,35 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.chatroom-links').forEach(link => {
         link.onclick = () => {
             var page = link.innerHTML;
-            // socket.emit('leave', { 'room': document.title });
-            // socket.emit('join', { 'room': page });
-            socket.emit('load chatroom', { 'namechatroom': page })
-            // load_page(page);
-            return false;
+            socket.emit('leave', { 'room': document.title });
+            socket.emit('join', { 'room': page });
+            load_page(page);
+            // socket.emit('load chatroom', { 'namechatroom': page })
+
+            var exists = false;
+            namechatroom = page;
+            mychatrooms = document.querySelector('#mychatrooms').querySelectorAll('*');
+            for (var cat of mychatrooms) {
+                // console.log(cat.innerHTML);
+                if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase().trim()) {
+                    exists = true;
+                    break;
+                }
+                else {
+                    exists = false;
+                }
+            }
+            if (exists === false) {
+                var mychatrooms = document.querySelector('#mychatrooms');
+                var a = document.createElement('a');
+                var hr = document.createElement('hr');
+                a.href = '/';
+                a.className = 'chatroom-links';
+                a.innerHTML = page;
+                mychatrooms.append(a);
+                mychatrooms.append(hr);
+                // return false;
+            }
         };
     });
 
@@ -141,7 +165,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 socket.emit('leave', { 'room': document.title });
                 socket.emit('join', { 'room': page });
                 load_page(page);
-                return false;
+
+                var exists = false;
+                namechatroom = page;
+                mychatrooms = document.querySelector('#mychatrooms').querySelectorAll('*');
+                for (var cat of mychatrooms) {
+                    // console.log(cat.innerHTML);
+                    if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase().trim()) {
+                        exists = true;
+                        break;
+                    }
+                    else {
+                        exists = false;
+                    }
+                }
+                if (exists === false) {
+                    var mychatrooms = document.querySelector('#mychatrooms');
+                    var a = document.createElement('a');
+                    var hr = document.createElement('hr');
+                    a.href = '/';
+                    a.className = 'chatroom-links';
+                    a.innerHTML = page;
+                    mychatrooms.append(a);
+                    mychatrooms.append(hr);
+                    // return false;
+                }
             };
         });
     });
@@ -151,31 +199,49 @@ document.addEventListener('DOMContentLoaded', () => {
         socket.emit('join', { 'room': data.namechatroom });
         load_page(data.namechatroom);
 
-        // mychatrooms = document.querySelector('#mychatrooms');
-        // chatroom = data.namechatroom;
-        // const a = document.createElement('a');
-        // const hr = document.createElement('hr');
-        // a.href="/";
-        // a.className="chatroom-links";
-        // a.innerHTML=chatroom;
+        var mychatrooms = document.querySelector('#mychatrooms');
+        var a = document.createElement('a');
+        var hr = document.createElement('hr');
+        a.href = '/';
+        a.className = 'chatroom-links';
+        a.innerHTML = data.namechatroom;
+        mychatrooms.append(a);
+        mychatrooms.append(hr);
 
-        // let exists = false;
-        // allchatrooms = document.querySelectorAll('.chatroom-links');
-        // for (var cat of allchatrooms) {
-        //     // console.log(cat.innerHTML);
-        //     if (cat.innerHTML.toLowerCase() === chatroom.toLowerCase()) {
-        //         exists = true;
-        //         break;
-        //     }
-        //     else {
-        //         exists = false;
-        //     }
-        // }
+        document.querySelectorAll('.chatroom-links').forEach(link => {
+            link.onclick = () => {
+                var page = link.innerHTML;
+                socket.emit('leave', { 'room': document.title });
+                socket.emit('join', { 'room': page });
+                load_page(page);
+                // socket.emit('load chatroom', { 'namechatroom': page })
 
-        // if(exists == false){
-        //     mychatrooms.append(a);
-        //     mychatrooms.append(hr);
-        // }
+                var exists = false;
+                namechatroom = page;
+                mychatrooms = document.querySelector('#mychatrooms').querySelectorAll('*');
+                for (var cat of mychatrooms) {
+                    // console.log(cat.innerHTML);
+                    if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase().trim()) {
+                        exists = true;
+                        break;
+                    }
+                    else {
+                        exists = false;
+                    }
+                }
+                if (exists === false) {
+                    var mychatrooms = document.querySelector('#mychatrooms');
+                    var a = document.createElement('a');
+                    var hr = document.createElement('hr');
+                    a.href = '#';
+                    a.className = 'chatroom-links';
+                    a.innerHTML = page;
+                    mychatrooms.append(a);
+                    mychatrooms.append(hr);
+                    // return false;
+                }
+            };
+        });
 
     });
 });
@@ -213,5 +279,5 @@ function load_page(name) {
         history.pushState({ 'title': name, 'text': data_temp }, name, `/lobby/${name}`);
     };
     request.send();
-
+    return false;
 }
