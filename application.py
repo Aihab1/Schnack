@@ -15,6 +15,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+#messages will be a dictionary of the form {"chatroomname": {"password": VAL, "allmessages": []}}
 messages = {}
 users = []
 #chatrooms will be a dictionary of the form {"username": {"currentroom": VAL, "allrooms": []}}
@@ -34,7 +35,7 @@ def lobby():
         date = today.strftime('%d%m%Y%b')
 
         if "home" not in messages:
-            messages["home"] = []
+            messages["home"] = {"password": None, "allmessages": []}
 
         return render_template("lobby.html", username=session['username'], messages=messages, date=date, mychatrooms = chatrooms[session['username']]["allrooms"])
     else:
@@ -80,12 +81,12 @@ def message(data):
     time = now.strftime("%H:%M")
     date = today.strftime('%d%m%Y%b')
     
-    if data["namechatroom"] not in messages:
-        messages[data["namechatroom"]] = []
-    messages[data["namechatroom"]].append({"message": data["msg"], "username": session['username'], "time":time, "date":date})
+    if "allmessages" not in messages[data["namechatroom"]]:
+        messages[data["namechatroom"]]["allmessages"] = []
+    messages[data["namechatroom"]]["allmessages"].append({"message": data["msg"], "username": session['username'], "time":time, "date":date})
 
-    if len(messages[data["namechatroom"]]) > 100:
-        messages[data["namechatroom"]].pop(0)
+    if len(messages[data["namechatroom"]]["allmessages"]) > 100:
+        messages[data["namechatroom"]]["allmessages"].pop(0)
 
     data = {
         "msg": data["msg"],
@@ -99,20 +100,21 @@ def message(data):
 @socketio.on("submit chatroom")
 def chatroom(data):
     if str(data["namechatroom"]) not in messages:
-        messages[str(data["namechatroom"])] = []
+        messages[str(data["namechatroom"])] = {"password": data["password"], "allmessages": []}
     
     data = {
-        "namechatroom": data["namechatroom"]
+        "namechatroom": data["namechatroom"],
+        "password": data["password"]
     }
     emit("announce chatroom", data, broadcast=True)
 
 @app.route("/lobby/home")
 def home():
-    return jsonify(messages["home"])
+    return jsonify(messages["home"]["allmessages"])
 
 @app.route("/lobby/<name>")
 def chatroom(name):
-    return jsonify(messages[name])
+    return jsonify(messages[name]["allmessages"])
 
 @app.route("/iamkira/<name>")
 def reloadingfunction(name):
@@ -142,6 +144,16 @@ def firstload():
 @socketio.on('load chatroom')
 def loadchatroom(data):
     data = {
-        "namechatroom": data["namechatroom"]
+        "namechatroom": data["namechatroom"],
+        "password": data["password"]
     }
     emit("load forme", data, broadcast=False)
+
+@socketio.on('enter password')
+def enterpassword(data):
+    data = {
+        'currentroom': document.title, 
+        'joinroom': page,
+        'password': messages[page]["password"]
+    }
+    emit("password check", data, broadcast=False)
