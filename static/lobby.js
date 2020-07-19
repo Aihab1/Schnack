@@ -33,50 +33,88 @@ document.addEventListener('DOMContentLoaded', () => {
             socket.emit('enter password', { 'currentroom': document.title, 'joinroom': page });
             // socket.emit('load chatroom', { 'namechatroom': page })
 
-            var exists = false;
-            namechatroom = page;
-            mychatrooms = document.querySelector('#mychatrooms').querySelectorAll('*');
-            for (var cat of mychatrooms) {
-                // console.log(cat.innerHTML);
-                if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase().trim()) {
-                    exists = true;
-                    break;
-                }
-                else {
-                    exists = false;
-                }
-            }
-            if (exists === false) {
-                var mychatrooms = document.querySelector('#mychatrooms');
-                var a = document.createElement('a');
-                var li = document.createElement('li');
-                li.className = 'list-unstyled';
-                a.href = "";
-                a.className = 'chatroom-links';
-                a.innerHTML = page;
-                li.appendChild(a);
-                mychatrooms.append(li);
-                // return false;
-            }
-
             return false;
         };
     });
 
     socket.on('password check', data => {
-        console.log("Hello button pressed");
         submitbutton = document.querySelector("#passwordenter");
-        submitbutton.onclick = () => {
-            
-            enteredpassword = document.querySelector("#checkpassword").value;
-            if (enteredpassword === data["password"]) {
-                socket.emit('leave', { 'room': document.title });
-                socket.emit('join', { 'room': page });
-                load_page(page);
-                document.querySelector("#checkpassword").value = "";
+
+        if (!data["password"]) {
+            document.querySelector('#joinlobbytitle').innerHTML = "This is a public room";
+            document.querySelector('#joinlobbypasswordheading').innerHTML = "We discourage you to share any sensitive information such as passwords, credit card, bank details etc.";
+        }
+        else {
+            document.querySelector('#joinlobbytitle').innerHTML = "Tryna break in?";
+            if (document.querySelector('#joinlobbypasswordheading').innerHTML === "We discourage you to share any sensitive information such as passwords, credit card, bank details etc.") {
+                document.querySelector('#joinlobbypasswordheading').innerHTML = "";
+                h6 = document.createElement('h6');
+                h6.innerHTML = "Password";
+                passwordfield = document.createElement('input');
+                passwordfield.setAttribute('type', 'password');
+                passwordfield.setAttribute('id', 'checkpassword');
+                passwordfield.setAttribute('placeholder', 'Password');
+                document.querySelector('#joinlobbypasswordheading').append(h6);
+                document.querySelector('#joinlobbypasswordheading').append(passwordfield);
+            }
+        }
+
+        //Adding link to #mychatrooms div
+        var exists = false;
+        mychatrooms = document.querySelector('#mychatrooms').querySelectorAll('*');
+        for (var cat of mychatrooms) {
+            // console.log(cat.innerHTML);
+            if (cat.innerHTML.toLowerCase() === data["joinroom"].toLowerCase().trim()) {
+                exists = true;
+                break;
             }
             else {
-                alert("Attempt to break-in failed. Enter the correct password!");
+                exists = false;
+            }
+        }
+
+        submitbutton.onclick = () => {
+            if (data["password"]) {
+                enteredpassword = document.querySelector("#checkpassword").value;
+                if (enteredpassword === data["password"]) {
+                    socket.emit('leave', { 'room': data["currentroom"] });
+                    socket.emit('join', { 'room': data["joinroom"] });
+                    load_page(data["joinroom"]);
+                    document.querySelector("#checkpassword").value = "";
+                    if (exists === false) {
+                        var mychatrooms = document.querySelector('#mychatrooms');
+                        var a = document.createElement('a');
+                        var li = document.createElement('li');
+                        li.className = 'list-unstyled';
+                        a.href = "";
+                        a.className = 'chatroom-links';
+                        a.innerHTML = data["joinroom"];
+                        li.appendChild(a);
+                        mychatrooms.append(li);
+                        // return false;
+                    }
+                }
+                else {
+                    alert("Attempt to break-in failed. Enter the correct password!");
+                    document.querySelector("#checkpassword").value = "";
+                }
+            }
+            else {
+                socket.emit('leave', { 'room': data["currentroom"] });
+                socket.emit('join', { 'room': data["joinroom"] });
+                load_page(data["joinroom"]);
+                if (exists === false) {
+                    var mychatrooms = document.querySelector('#mychatrooms');
+                    var a = document.createElement('a');
+                    var li = document.createElement('li');
+                    li.className = 'list-unstyled';
+                    a.href = "";
+                    a.className = 'chatroom-links';
+                    a.innerHTML = data["joinroom"];
+                    li.appendChild(a);
+                    mychatrooms.append(li);
+                    // return false;
+                }
             }
         };
     });
@@ -169,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         allchatrooms = document.querySelectorAll('.chatroom-links');
         if (checkprivate.checked) {
             password = document.querySelector('.password4chatroom').value;
-            console.log(password);
+            // console.log(password);
         }
         for (var cat of allchatrooms) {
             // console.log(cat.innerHTML);
@@ -196,6 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
         li.setAttribute('class', 'list-unstyled');
         a.setAttribute('class', 'chatroom-links');
         a.setAttribute('data-dismiss', 'modal');
+        a.setAttribute('data-toggle', 'modal');
+        a.setAttribute('data-target', '#verifypassword');
         li.appendChild(a);
         document.querySelector('#activechatrooms').append(li);
 
@@ -203,36 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.chatroom-links').forEach(link => {
             link.onclick = () => {
                 var page = link.innerHTML;
-                socket.emit('leave', { 'room': document.title });
-                socket.emit('join', { 'room': page });
-                load_page(page);
-
-                var exists = false;
-                namechatroom = page;
-                mychatrooms = document.querySelector('#mychatrooms').querySelectorAll('*');
-                for (var cat of mychatrooms) {
-                    // console.log(cat.innerHTML);
-                    if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase().trim()) {
-                        exists = true;
-                        break;
-                    }
-                    else {
-                        exists = false;
-                    }
-                }
-                if (exists === false) {
-                    var mychatrooms = document.querySelector('#mychatrooms');
-                    var a = document.createElement('a');
-                    var li = document.createElement('li');
-                    li.className = 'list-unstyled';
-                    a.href = "";
-                    a.className = 'chatroom-links';
-                    a.innerHTML = page;
-                    li.appendChild(a);
-                    mychatrooms.append(li);
-                    // return false;
-                }
-
+                socket.emit('enter password', { 'currentroom': document.title, 'joinroom': page });
+                // socket.emit('load chatroom', { 'namechatroom': page })
+    
                 return false;
             };
         });
@@ -250,6 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = "list-unstyled";
         a.href = "";
         a.setAttribute('class', 'chatroom-links');
+        a.setAttribute('data-dismiss', 'modal');
+        a.setAttribute('data-toggle', 'modal');
+        a.setAttribute('data-target', '#verifypassword');
         a.innerHTML = data.namechatroom;
         li.appendChild(a);
         mychatrooms.append(li);
@@ -257,37 +273,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.chatroom-links').forEach(link => {
             link.onclick = () => {
                 var page = link.innerHTML;
-                socket.emit('leave', { 'room': document.title });
-                socket.emit('join', { 'room': page });
-                load_page(page);
+                socket.emit('enter password', { 'currentroom': document.title, 'joinroom': page });
                 // socket.emit('load chatroom', { 'namechatroom': page })
-
-                var exists = false;
-                namechatroom = page;
-                mychatrooms = document.querySelector('#mychatrooms').querySelectorAll('*');
-                for (var cat of mychatrooms) {
-                    // console.log(cat.innerHTML);
-                    if (cat.innerHTML.toLowerCase() === namechatroom.toLowerCase().trim()) {
-                        exists = true;
-                        break;
-                    }
-                    else {
-                        exists = false;
-                    }
-                }
-                if (exists === false) {
-                    var mychatrooms = document.querySelector('#mychatrooms');
-                    var a = document.createElement('a');
-                    var li = document.createElement('li');
-                    li.className = 'list-unstyled';
-                    a.href = "";
-                    a.className = 'chatroom-links';
-                    a.innerHTML = page;
-                    li.appendChild(a);
-                    mychatrooms.append(li);
-                    // return false;
-                }
-
+    
                 return false;
             };
         });

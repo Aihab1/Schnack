@@ -152,8 +152,8 @@ def loadchatroom(data):
 @socketio.on('enter password')
 def enterpassword(data):
     data = {
-        'currentroom': document.title, 
-        'joinroom': page,
-        'password': messages[page]["password"]
+        'currentroom': data["currentroom"], 
+        'joinroom': data["joinroom"],
+        'password': messages[data["joinroom"]]["password"]
     }
     emit("password check", data, broadcast=False)
