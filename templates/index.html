@@ -10,7 +10,7 @@
     <h1>Liberate your communication</h1>
     <p>Whether you’re part of a school club, gaming group, or just a handful of college friends who want to spend time together, Schnack makes it easy to chat every day and hang out more often.</p>
     <form action="{{ url_for('lobby_redirect') }}" method="POST">
-        <input type="text" maxlength="15" name="username" spellcheck="false" placeholder="Enter a username" autocomplete="off" required>
+        <input class="form-control" type="text" maxlength="15" name="username" spellcheck="false" placeholder="Enter a username" autocomplete="off" required>
         <button type="submit">Start</button>
     </form>
     <h1>Rooms with plenty of space to talk</h1>

@@ -108,11 +108,11 @@ def chatroom(data):
     }
     emit("announce chatroom", data, broadcast=True)
 
-@app.route("/lobby/home")
+@app.route("/lobby/home", methods = ["POST"])
 def home():
     return jsonify(messages["home"]["allmessages"])
 
-@app.route("/lobby/<name>")
+@app.route("/lobby/<name>", methods = ["POST"])
 def chatroom(name):
     return jsonify(messages[name]["allmessages"])
 

@@ -340,7 +340,7 @@ window.onpopstate = e => {
 // Renders contents of new page in main view.
 function load_page(name) {
     const request = new XMLHttpRequest();
-    request.open('GET', `/lobby/${name}`);
+    request.open('POST', `/lobby/${name}`);
     request.onload = () => {
         const data_temp = JSON.parse(request.response);
         // console.log(data_temp);
