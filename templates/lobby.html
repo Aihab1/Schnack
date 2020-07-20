@@ -27,7 +27,7 @@
         <ul id="mychatrooms">
             {% for chatroom in mychatrooms %}
             <li class="list-unstyled">
-                <a href="" class="chatroom-links" data-toggle="modal" data-target="#verifypassword">{{chatroom}}</a>
+                <a href="" class="mychatroom-links">{{chatroom}}</a>
             </li>
             {% endfor %}
         </ul>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="modal-body" id="joinlobbypasswordheading">
                     <h6>Password</h6>
-                    <input type="password" id="checkpassword" placeholder="Password">
+                    <input type="password" id="checkpassword" placeholder="Password" class="form-control">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="passwordenter" data-dismiss="modal">Enter</button>
@@ -111,7 +111,7 @@
                 <div class="modal-body">
                     <h6>Name</h6>
                     <input type="text" id="namechatroom" placeholder="{{username|capitalize}}'s Chatroom"
-                        autocomplete="off">
+                        autocomplete="off" spellcheck="false" class="form-control">
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="checkprivate">
                         <label class="form-check-label" for="checkprivate">Private</label>

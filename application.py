@@ -116,7 +116,7 @@ def home():
 def chatroom(name):
     return jsonify(messages[name]["allmessages"])
 
-@app.route("/iamkira/<name>")
+@app.route("/iwilltakeapotatochipandEATIT/<name>")
 def reloadingfunction(name):
     return redirect(url_for('lobby'))
 

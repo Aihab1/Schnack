@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#send').disabled = true;
     };
 
+    document.querySelectorAll('.mychatroom-links').forEach(link => {
+        link.onclick = () => {
+            socket.emit('leave', { 'room': document.title });
+            socket.emit('join', { 'room': link.innerHTML });
+            load_page(link.innerHTML);
+
+            return false;
+        }
+    });
+
     // Set links up to load new pages.
     document.querySelectorAll('.chatroom-links').forEach(link => {
         link.onclick = () => {
@@ -51,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 h6 = document.createElement('h6');
                 h6.innerHTML = "Password";
                 passwordfield = document.createElement('input');
+                passwordfield.className = "form-control";
                 passwordfield.setAttribute('type', 'password');
                 passwordfield.setAttribute('id', 'checkpassword');
                 passwordfield.setAttribute('placeholder', 'Password');
@@ -87,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         var li = document.createElement('li');
                         li.className = 'list-unstyled';
                         a.href = "";
-                        a.className = 'chatroom-links';
+                        a.className = 'mychatroom-links';
                         a.innerHTML = data["joinroom"];
                         li.appendChild(a);
                         mychatrooms.append(li);
@@ -109,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     var li = document.createElement('li');
                     li.className = 'list-unstyled';
                     a.href = "";
-                    a.className = 'chatroom-links';
+                    a.className = 'mychatroom-links';
                     a.innerHTML = data["joinroom"];
                     li.appendChild(a);
                     mychatrooms.append(li);
@@ -190,7 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
             inputpass = document.createElement('input');
             label = document.createElement('h6');
             inputpass.setAttribute('type', 'text');
-            inputpass.className = 'password4chatroom';
+            inputpass.setAttribute('autocomplete', 'off');
+            inputpass.setAttribute('spellcheck', 'false');
+            inputpass.className = 'password4chatroom form-control';
             label.innerHTML = 'Password';
             privatediv.append(label);
             privatediv.append(inputpass);
@@ -239,13 +252,23 @@ document.addEventListener('DOMContentLoaded', () => {
         li.appendChild(a);
         document.querySelector('#activechatrooms').append(li);
 
+        document.querySelectorAll('.mychatroom-links').forEach(link => {
+            link.onclick = () => {
+                socket.emit('leave', { 'room': document.title });
+                socket.emit('join', { 'room': link.innerHTML });
+                load_page(link.innerHTML);
+    
+                return false;
+            }
+        });
+
         // Set links up to load new pages.
         document.querySelectorAll('.chatroom-links').forEach(link => {
             link.onclick = () => {
                 var page = link.innerHTML;
                 socket.emit('enter password', { 'currentroom': document.title, 'joinroom': page });
                 // socket.emit('load chatroom', { 'namechatroom': page })
-    
+
                 return false;
             };
         });
@@ -262,20 +285,27 @@ document.addEventListener('DOMContentLoaded', () => {
         var li = document.createElement('li');
         li.className = "list-unstyled";
         a.href = "";
-        a.setAttribute('class', 'chatroom-links');
-        a.setAttribute('data-dismiss', 'modal');
-        a.setAttribute('data-toggle', 'modal');
-        a.setAttribute('data-target', '#verifypassword');
+        a.setAttribute('class', 'mychatroom-links');
         a.innerHTML = data.namechatroom;
         li.appendChild(a);
         mychatrooms.append(li);
+
+        document.querySelectorAll('.mychatroom-links').forEach(link => {
+            link.onclick = () => {
+                socket.emit('leave', { 'room': document.title });
+                socket.emit('join', { 'room': link.innerHTML });
+                load_page(link.innerHTML);
+    
+                return false;
+            }
+        });
 
         document.querySelectorAll('.chatroom-links').forEach(link => {
             link.onclick = () => {
                 var page = link.innerHTML;
                 socket.emit('enter password', { 'currentroom': document.title, 'joinroom': page });
                 // socket.emit('load chatroom', { 'namechatroom': page })
-    
+
                 return false;
             };
         });
@@ -314,7 +344,7 @@ function load_page(name) {
         });
         // Push state to URL.
         document.title = name;
-        history.pushState({ 'title': name, 'text': data_temp }, name, `/iamkira/${name}`);
+        history.pushState({ 'title': name, 'text': data_temp }, name, `/iwilltakeapotatochipandEATIT/${name}`);
     };
     request.send();
     return false;
