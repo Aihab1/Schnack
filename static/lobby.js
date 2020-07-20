@@ -127,6 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     // return false;
                 }
             }
+
+            document.querySelectorAll('.mychatroom-links').forEach(link => {
+                link.onclick = () => {
+                    socket.emit('leave', { 'room': document.title });
+                    socket.emit('join', { 'room': link.innerHTML });
+                    load_page(link.innerHTML);
+
+                    return false;
+                }
+            });
+
         };
     });
 
@@ -257,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 socket.emit('leave', { 'room': document.title });
                 socket.emit('join', { 'room': link.innerHTML });
                 load_page(link.innerHTML);
-    
+
                 return false;
             }
         });
@@ -295,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 socket.emit('leave', { 'room': document.title });
                 socket.emit('join', { 'room': link.innerHTML });
                 load_page(link.innerHTML);
-    
+
                 return false;
             }
         });
