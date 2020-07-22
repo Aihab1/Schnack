@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schnack</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles/index.css">
 </head>
+
 <body>
-    <h1>Perfect place to go bananas with your friends</h1>
-    <p>Let go of Ouija Boards. Connect with people on Schnack!</p>
-    <p>Schnack makes it easy to hangout with friends and socialize with people. Use this platform to liberate your communication. TODAY!</p>
-    <form action="{{ url_for('lobby_redirect') }}" method="POST">
-        <input class="form-control" type="text" maxlength="15" name="username" spellcheck="false" placeholder="Enter a username" autocomplete="off" required>
-        <button type="submit">Start</button>
-    </form>
+    <div id="top-box">
+        <h1>Perfect place to go bananas with your friends</h1>
+        <p>
+            Let go of Ouija Boards. Connect with people on Schnack!
+            <br>
+            Schnack makes it easy to hangout with friends and socialize with people. Use this platform to liberate your
+            communication. TODAY!
+        </p>
+
+        <form action="{{ url_for('lobby_redirect') }}" method="POST">
+            <div id="form-container">
+                <input class="form-control" type="text" maxlength="15" name="username" spellcheck="false"
+                    placeholder="Enter a username" autocomplete="off" required>
+                <button type="submit">
+                    <svg width="40px" height="40px" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill"
+                        fill="#161b21" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z" />
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
     <h1>Rooms with plenty of space to talk</h1>
-    <p>We've got dedicated chat rooms for every conversation. Think your message will miss out? Neither ever nor never!</p>
+    <p>We've got dedicated chat rooms for every conversation. Think your message will miss out? Neither ever nor never!
+    </p>
     <h1>Where you can speak your heart out</h1>
     <p>Grab a seat in a public chat room when you’re free. You may well make friends without much efforts.</p>
     <h1>Private rooms where nobody could get your goat</h1>
     <p>Your password and our server are perfect for each other. Never believe anything else.</p>
 </body>
+
 </html>
