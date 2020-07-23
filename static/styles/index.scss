@@ -19,7 +19,7 @@ $white: #f2f2f4;
 }
 
 body{
-  overflow-x: hidden;
+  overflow-x: hidden; 
 }
 
 #top-box {
@@ -117,11 +117,12 @@ body{
     top: 70px;
     left: 50%;
     transform: translateX(-50%);
-    fill: white;
-    animation: beat 2s ease-out 0s infinite;
+    fill: $premium_light_blue;
+    animation: beat_colorful 2s ease-out 0s infinite;
   }
+  
 }
-@keyframes beat{
+@keyframes beat_colorful{
   0%{
     opacity: 0.2;
   }
@@ -131,6 +132,7 @@ body{
   }
   100%{
     opacity: 0.2;
+    filter: hue-rotate(360deg);
   }
 }
 #image-container{
@@ -149,6 +151,7 @@ body{
 }
 
 #bottom-box{
+  overflow-x: hidden;
   padding-bottom: 100px;
   display: flex;
   flex-direction: column;

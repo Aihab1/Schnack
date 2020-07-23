@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+$orange: #f4a950;
+$black: #161b21;
+$premium_dark_blue: #161626;
+$premium_dark_grey: #3b3a4a;
+$premium_light_blue: #1ebad6;
+$premium_light_grey: #c0c0c8;
+$white: #f2f2f4;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  list-style: none;
+}
+a {
+  color: $premium_light_blue;
+}
+a:hover{
+    text-decoration: none;
+    color: $premium_light_blue;
+}
+#outer-div {
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  #left-outer {
+    padding: 20px;
+    background: $premium_dark_blue;
+    height: 100%;
+    position: fixed;
+    width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    #left {
+      width: 100%;
+      #myusername {
+        color: $white;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        #collapseArrow {
+          height: 25px;
+          width: 25px;
+          transform: rotate(90deg);
+          margin-left: 15px;
+          -webkit-transition: -webkit-transform 0.8s ease-in-out;
+          -ms-transition: -ms-transform 0.8s ease-in-out;
+          transition: transform 0.8s ease-in-out;
+        }
+        #collapseArrow.open {
+          transform: rotate(270deg);
+        }
+      }
+      #online-dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background-color: #00c957;
+      }
+      #collapseLogout{
+          width: max-content;
+          padding-left: 20px;
+          opacity: 0.7;
+      }
+      #collapseLogout:hover{
+          opacity: 1;
+      }
+    }
+  }
+  #right-outer {
+    width: 100%;
+    margin-left: 300px;
+    padding: 20px;
+    background: $white;
+    overflow-y: auto;
+  }
+}
