@@ -11,6 +11,14 @@
 
 <body>
     <div id="top-box">
+        <div id="image-container">
+            <img src="../static/images/background1.jpg">
+        </div>
+        <svg class="svg-icon" id="heart" viewBox="0 0 20 20">
+            <path
+                d="M9.719,17.073l-6.562-6.51c-0.27-0.268-0.504-0.567-0.696-0.888C1.385,7.89,1.67,5.613,3.155,4.14c0.864-0.856,2.012-1.329,3.233-1.329c1.924,0,3.115,1.12,3.612,1.752c0.499-0.634,1.689-1.752,3.612-1.752c1.221,0,2.369,0.472,3.233,1.329c1.484,1.473,1.771,3.75,0.693,5.537c-0.19,0.32-0.425,0.618-0.695,0.887l-6.562,6.51C10.125,17.229,9.875,17.229,9.719,17.073 M6.388,3.61C5.379,3.61,4.431,4,3.717,4.707C2.495,5.92,2.259,7.794,3.145,9.265c0.158,0.265,0.351,0.51,0.574,0.731L10,16.228l6.281-6.232c0.224-0.221,0.416-0.466,0.573-0.729c0.887-1.472,0.651-3.346-0.571-4.56C15.57,4,14.621,3.61,13.612,3.61c-1.43,0-2.639,0.786-3.268,1.863c-0.154,0.264-0.536,0.264-0.69,0C9.029,4.397,7.82,3.61,6.388,3.61">
+            </path>
+        </svg>
         <h1>Perfect place to go bananas with your friends</h1>
         <p>
             Let go of Ouija Boards. Connect with people on Schnack!
@@ -21,11 +29,19 @@
 
         <form action="{{ url_for('lobby_redirect') }}" method="POST">
             <div id="form-container">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path fill="#161626" d="M14.023,12.154c1.514-1.192,2.488-3.038,2.488-5.114c0-3.597-2.914-6.512-6.512-6.512
+                        c-3.597,0-6.512,2.916-6.512,6.512c0,2.076,0.975,3.922,2.489,5.114c-2.714,1.385-4.625,4.117-4.836,7.318h1.186
+                        c0.229-2.998,2.177-5.512,4.86-6.566c0.853,0.41,1.804,0.646,2.813,0.646c1.01,0,1.961-0.236,2.812-0.646
+                        c2.684,1.055,4.633,3.568,4.859,6.566h1.188C18.648,16.271,16.736,13.539,14.023,12.154z M10,12.367
+                        c-2.943,0-5.328-2.385-5.328-5.327c0-2.943,2.385-5.328,5.328-5.328c2.943,0,5.328,2.385,5.328,5.328
+                        C15.328,9.982,12.943,12.367,10,12.367z"></path>
+                </svg>
                 <input class="form-control" type="text" maxlength="15" name="username" spellcheck="false"
                     placeholder="Enter a username" autocomplete="off" required>
                 <button type="submit">
                     <svg width="40px" height="40px" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill"
-                        fill="#161b21" xmlns="http://www.w3.org/2000/svg">
+                        fill="#161626" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z" />
                     </svg>
@@ -33,13 +49,33 @@
             </div>
         </form>
     </div>
-    <h1>Rooms with plenty of space to talk</h1>
-    <p>We've got dedicated chat rooms for every conversation. Think your message will miss out? Neither ever nor never!
-    </p>
-    <h1>Where you can speak your heart out</h1>
-    <p>Grab a seat in a public chat room when you’re free. You may well make friends without much efforts.</p>
-    <h1>Private rooms where nobody could get your goat</h1>
-    <p>Your password and our server are perfect for each other. Never believe anything else.</p>
+    <div id="bottom-box">
+        <div id="bottom-box-1">
+            <div class="content-img-1"></div>
+            <div class="content">
+                <h1>Rooms with plenty of space to talk</h1>
+                <p>We've got dedicated chat rooms for every conversation. Think your message will miss out? Neither ever
+                    nor
+                    never!
+                </p>
+            </div>
+        </div>
+        <div id="bottom-box-2">
+            <div class="content-img-2"></div>
+            <div class="content">
+                <h1>Where you can speak your heart out</h1>
+                <p>Grab a seat in a public chat room when you’re free. You may well make friends without much efforts.
+                </p>
+            </div>
+        </div>
+        <div id="bottom-box-3">
+            <div class="content-img-1"></div>
+            <div class="content">
+                <h1>Private rooms where nobody could get your goat</h1>
+                <p>Your password and our server are perfect for each other. Never believe anything else.</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
