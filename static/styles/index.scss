@@ -18,6 +18,10 @@ $white: #f2f2f4;
   font-family: "Roboto";
 }
 
+body{
+  overflow-x: hidden;
+}
+
 #top-box {
   overflow: hidden;
   position: relative;
