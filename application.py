@@ -36,8 +36,13 @@ def lobby():
 
         if "home" not in messages:
             messages["home"] = {"password": None, "allmessages": []}
+        
+        try:
+            mychatrooms = chatrooms[session['username']]["allrooms"]
+        except:
+            mychatrooms = ["home"]
 
-        return render_template("lobby.html", username=session['username'], messages=messages, date=date, mychatrooms = chatrooms[session['username']]["allrooms"])
+        return render_template("lobby.html", username=session['username'], messages=messages, date=date, mychatrooms = mychatrooms)
     else:
         return redirect(url_for('index'))
 

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 $orange: #f4a950;
 $black: #161b21;
@@ -12,39 +12,57 @@ $premium_light_grey: #c0c0c8;
 $white: #f2f2f4;
 
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
   list-style: none;
 }
 a {
   color: $premium_light_blue;
 }
-a:hover{
-    text-decoration: none;
-    color: $premium_light_blue;
+a:hover {
+  text-decoration: none;
+  color: $premium_light_blue;
+  opacity: 0.7;
 }
+hr {
+  color: $premium_light_blue;
+  background: $premium_light_blue;
+}
+
 #outer-div {
   width: 100%;
   display: flex;
   height: 100vh;
   #left-outer {
+    // margin: 15px;
     padding: 20px;
-    background: $premium_dark_blue;
-    height: 100%;
+    background: linear-gradient(45deg, rgb(9, 12, 31), rgb(21, 21, 49));
+    // background: $premium_dark_blue;
     position: fixed;
+    right: 0;
+    height: 100%;
     width: 300px;
     overflow-y: auto;
     overflow-x: hidden;
+    // border-top-right-radius: 10px;
+    // border-bottom-right-radius: 10px;
+    // box-shadow: 5px 0px 1px $premium_light_grey;
     #left {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       width: 100%;
       #myusername {
         color: $white;
         font-size: 1.4rem;
         display: flex;
         align-items: center;
-        font-weight: bold;
+        // font-weight: bold;
+        cursor: pointer;
+        
         #collapseArrow {
           height: 25px;
           width: 25px;
@@ -65,19 +83,101 @@ a:hover{
         margin-right: 10px;
         background-color: #00c957;
       }
-      #collapseLogout{
-          width: max-content;
-          padding-left: 20px;
-          opacity: 0.7;
+      #collapseLogout {
+        width: max-content;
+        padding-left: 20px;
       }
-      #collapseLogout:hover{
-          opacity: 1;
+      #mychatroomsheading-container {
+        // background: yellow;
+        
+        display: flex;
+        svg {
+          margin-right: 10px;
+          margin-top: 5px;
+          // background: pink;
+          height: 15px;
+        }
+        #mychatroomsheading {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          
+          // background: white;
+          color: $premium_dark_grey;
+          font-size: 1.2rem;
+          // font-weight: bold;
+          #circledArrow {
+            transform: rotate(180deg);
+            -webkit-transition: -webkit-transform 0.8s ease-in-out;
+            -ms-transition: -ms-transform 0.8s ease-in-out;
+            transition: transform 0.8s ease-in-out;
+          }
+          #circledArrow.open {
+            transform: rotate(360deg);
+          }
+        }
+      }
+      .mychatrooms-li-element{
+        // padding-left: 10px;
+        display: flex;
+        align-items: center;
+      }
+      .mychatrooms-li-element:before{
+        content: '#';
+        color: $premium_dark_grey;
+        font-size: 1.4rem;
+        margin-right: 10px;
+        // font-weight: bold;
+      }
+      button {
+        border-radius: 25px;
+        width: 100%;
+        margin-bottom: 20px;
+        height: 46px;
+        padding: 10px 10px 10px 10px;
+        text-align: center;
+        border: none;
+        font-size: 1.2rem;
+        font-family: "Quicksand", sans-serif;
+        color: $premium_dark_grey;
+        background: $white;
+      }
+      .buttons-container{
+        position: relative;
+        svg{
+          position: absolute;
+          top: 8px;
+          left: 5px;
+          pointer-events: none;
+          transform: rotate(270deg);
+          height: 30px;
+        }
+      }
+      #mychatroomspluslist:hover,
+      button:hover,
+      button:focus,
+      button:active {
+        outline: 0px !important;
+        -webkit-appearance: none;
+        // box-shadow: none !important;
+        box-shadow: 0px 1px 3px $premium_light_blue,
+          0px -0.7px 3px $premium_light_blue;
+      }
+      #mychatroomspluslist{
+        border-radius: 25px;      
+        padding: 10px 15px 5px 15px;
+        // text-align: center;
+        border: none;
+        color: $premium_dark_blue;
+        background: $white;
+        margin-bottom: 20px;
+        margin-top: 30px;
       }
     }
   }
   #right-outer {
     width: 100%;
-    margin-left: 300px;
+    margin-right: 300px;
     padding: 20px;
     background: $white;
     overflow-y: auto;
