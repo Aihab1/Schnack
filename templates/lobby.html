@@ -92,12 +92,14 @@
         </div>
         <div id="right-outer">
             <div id="right">
-                <h2>Message Here</h2>
-                <input id="msg" class="form-control" spellcheck="false" autocomplete="off">
-                <button id="send">Send</button>
-                <ul id="messages">
+                <h1 id="chatroom-heading"></h1>
+                <div id="messages-container">
+                    <ul id="messages">
 
-                </ul>
+                    </ul>
+                </div>
+                <input id="msg" class="form-control" spellcheck="false" autocomplete="off" placeholder="Type a message">
+                <button id="send">Send</button>
             </div>
         </div>
     </div>
@@ -199,6 +201,13 @@
     const arrowpluschatrooms = document.querySelector('#mychatroomsheading');
     arrowpluschatrooms.addEventListener("click", () => {
         circledarrow.classList.toggle("open");
+    });
+
+    const mybutton = document.querySelector('#send');
+    mybutton.addEventListener("click", () => {
+        scrollingElement = document.querySelector('#messages-container');
+        // scrollingElement.scrollTop = scrollingElement.scrollHeight;
+        scrollingElement.scrollTop = scrollingElement.scrollHeight - scrollingElement.clientHeight;
     });
 </script>
 

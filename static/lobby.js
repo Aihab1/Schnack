@@ -172,6 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const li = document.createElement('li');
         li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.msg}`;
         document.querySelector('#messages').append(li);
+        // var scrollingElement = document.querySelector('#messages-container');
+        // if (scrollingElement.scrollTop > scrollingElement.scrollHeight - 100) {
+        //     scrollingElement.scrollTop = scrollingElement.scrollHeight;
+        // }
     });
 
     //disable enable functioning for create button inside modal
@@ -330,6 +334,7 @@ window.onpopstate = e => {
     document.title = data.title;
     data_temp = data.text;
     document.querySelector('#messages').innerHTML = "";
+    document.querySelector('#chatroom-heading').innerHTML = `# ${document.title}`;
     data_temp.forEach(data => {
         const li = document.createElement('li');
         li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.message}`;
@@ -346,6 +351,7 @@ function load_page(name) {
         // console.log(data_temp);
         // data_list = data_temp["home"]
         document.querySelector('#messages').innerHTML = "";
+        document.querySelector('#chatroom-heading').innerHTML = `# ${name}`;
         document.querySelector('#create').disabled = true;
 
         data_temp.forEach(data => {
@@ -353,6 +359,10 @@ function load_page(name) {
             li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.message}`;
             document.querySelector('#messages').append(li);
         });
+
+        scrollingElement = document.querySelector('#messages-container');
+        scrollingElement.scrollTop = scrollingElement.scrollHeight;
+
         // Push state to URL.
         document.title = name;
         history.pushState({ 'title': name, 'text': data_temp }, name, `/iwilltakeapotatochipandEATIT/${name}`);
