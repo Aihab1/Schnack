@@ -37,13 +37,13 @@ hr {
   height: 100vh;
   #left-outer {
     // margin: 15px;
-    padding: 20px;
+    // padding: 20px; 
     background: linear-gradient(45deg, rgb(9, 12, 31), rgb(21, 21, 49));
-    // background: $premium_dark_blue;
+    // background: $premium_dark_blue;  
     position: fixed;
     right: 0;
     height: 100%;
-    width: 300px;
+    width: 350px;
     overflow-y: auto;
     overflow-x: hidden;
     // border-top-right-radius: 10px;
@@ -56,6 +56,11 @@ hr {
       justify-content: space-between;
       width: 100%;
       #myusername {
+        // background: $premium_dark_grey;
+        background: $premium_dark_blue;
+        opacity: 0.8;
+        width: 100%;
+        padding: 20px;
         color: $white;
         font-size: 1.4rem;
         display: flex;
@@ -67,7 +72,7 @@ hr {
           height: 25px;
           width: 25px;
           transform: rotate(90deg);
-          margin-left: 15px;
+          margin-left: auto;
           -webkit-transition: -webkit-transform 0.8s ease-in-out;
           -ms-transition: -ms-transform 0.8s ease-in-out;
           transition: transform 0.8s ease-in-out;
@@ -83,9 +88,17 @@ hr {
         margin-right: 10px;
         background-color: #00c957;
       }
-      #collapseLogout {
-        width: max-content;
-        padding-left: 20px;
+      #collapseLogout{
+        // background: $premium_dark_grey;
+        background: $premium_dark_blue;
+        opacity: 0.8;
+        width: 100%;
+        margin-top: -20px;
+        padding-bottom: 10px;
+      }
+      #collapseLogoutinside {
+        // width: max-content;
+        padding: 15px 15px 15px 20px;
       }
       #mychatroomsheading-container {
         // background: yellow;
@@ -98,19 +111,22 @@ hr {
           height: 15px;
         }
         #mychatroomsheading {
+          width: 100%;
+          padding-left: 20px;
+          padding-top: 20px;
+          padding-bottom: 15px;
           cursor: pointer;
           display: flex;
           align-items: center;
-          
           // background: white;
-          color: $premium_dark_grey;
+          color: $premium_light_grey;
           font-size: 1.2rem;
           // font-weight: bold;
           #circledArrow {
             transform: rotate(180deg);
-            -webkit-transition: -webkit-transform 0.8s ease-in-out;
-            -ms-transition: -ms-transform 0.8s ease-in-out;
-            transition: transform 0.8s ease-in-out;
+            -webkit-transition: -webkit-transform 0.3s ease-in-out;
+            -ms-transition: -ms-transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
           }
           #circledArrow.open {
             transform: rotate(360deg);
@@ -122,62 +138,85 @@ hr {
         display: flex;
         align-items: center;
       }
-      .mychatrooms-li-element:before{
-        content: '#';
-        color: $premium_dark_grey;
-        font-size: 1.4rem;
-        margin-right: 10px;
-        // font-weight: bold;
+      // .mychatrooms-li-element:before{
+      //   content: '#';
+      //   color: $premium_dark_grey;
+      //   font-size: 1.4rem;
+      //   margin-right: 10px;
+      //   // font-weight: bold;
+      // }
+      #left-second-half{
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+      #buttons-container{
+        width: 100%;
       }
       button {
-        border-radius: 25px;
-        width: 100%;
-        margin-bottom: 20px;
-        height: 46px;
-        padding: 10px 10px 10px 10px;
+        border-radius: 0;
+        width: 175px;
+        // height: 88px;
+        // margin-bottom: 20px;
+        padding: 20px;
         text-align: center;
         border: none;
+        border-right: 1px solid $premium_dark_grey;
         font-size: 1.2rem;
         font-family: "Quicksand", sans-serif;
         color: $premium_dark_grey;
         background: $white;
+        opacity: 0.8
       }
-      .buttons-container{
-        position: relative;
-        svg{
-          position: absolute;
-          top: 8px;
-          left: 5px;
-          pointer-events: none;
-          transform: rotate(270deg);
-          height: 30px;
-        }
-      }
-      #mychatroomspluslist:hover,
-      button:hover,
+      
       button:focus,
       button:active {
         outline: 0px !important;
         -webkit-appearance: none;
-        // box-shadow: none !important;
-        box-shadow: 0px 1px 3px $premium_light_blue,
-          0px -0.7px 3px $premium_light_blue;
+        box-shadow: none !important;
+        // box-shadow: 0px 1px 3px $premium_light_blue,
+        //   0px -0.7px 3px $premium_light_blue;
       }
+      button:hover{
+        outline: 0px !important;
+        -webkit-appearance: none;
+        box-shadow: none !important;
+        // box-shadow: 0px 1px 3px $premium_light_blue,
+        //   0px -0.7px 3px $premium_light_blue;
+        background: $premium_light_blue;
+      }
+      // #mychatroomspluslist:hover{
+      //   opacity: 1;
+      // }
       #mychatroomspluslist{
-        border-radius: 25px;      
-        padding: 10px 15px 5px 15px;
+        // border-radius: 25px;      
+        // padding: 20px 20px 10px 20px;
         // text-align: center;
         border: none;
-        color: $premium_dark_blue;
-        background: $white;
-        margin-bottom: 20px;
-        margin-top: 30px;
+        color: $premium_light_grey; 
+        background: $premium_dark_grey;
+        margin-bottom: 30px;
+        // margin-top: 30px;
+        opacity: 0.8;
+
+        a{
+          // background: $premium_dark_grey;
+          background: $white;
+          width: 100%;
+          padding: 20px;
+          border-top: 1px solid $premium_dark_grey;
+          color: $premium_dark_blue;
+        }
+        a:hover{
+          background: $premium_dark_grey;
+          color: $white;
+        }
       }
     }
   }
   #right-outer {
     width: 100%;
-    margin-right: 300px;
+    margin-right: 350px;
     padding: 20px;
     background: $white;
     overflow-y: auto;

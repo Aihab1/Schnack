@@ -35,12 +35,11 @@ hr {
 }
 
 #outer-div #left-outer {
-  padding: 20px;
   background: linear-gradient(45deg, #090c1f, #151531);
   position: fixed;
   right: 0;
   height: 100%;
-  width: 300px;
+  width: 350px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -61,6 +60,10 @@ hr {
 }
 
 #outer-div #left-outer #left #myusername {
+  background: #161626;
+  opacity: 0.8;
+  width: 100%;
+  padding: 20px;
   color: #f2f2f4;
   font-size: 1.4rem;
   display: -webkit-box;
@@ -77,7 +80,7 @@ hr {
   width: 25px;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
-  margin-left: 15px;
+  margin-left: auto;
   -webkit-transition: -webkit-transform 0.8s ease-in-out;
   transition: -webkit-transform 0.8s ease-in-out;
   transition: transform 0.8s ease-in-out;
@@ -98,10 +101,15 @@ hr {
 }
 
 #outer-div #left-outer #left #collapseLogout {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  padding-left: 20px;
+  background: #161626;
+  opacity: 0.8;
+  width: 100%;
+  margin-top: -20px;
+  padding-bottom: 10px;
+}
+
+#outer-div #left-outer #left #collapseLogoutinside {
+  padding: 15px 15px 15px 20px;
 }
 
 #outer-div #left-outer #left #mychatroomsheading-container {
@@ -117,6 +125,10 @@ hr {
 }
 
 #outer-div #left-outer #left #mychatroomsheading-container #mychatroomsheading {
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 15px;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -124,17 +136,17 @@ hr {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #3b3a4a;
+  color: #c0c0c8;
   font-size: 1.2rem;
 }
 
 #outer-div #left-outer #left #mychatroomsheading-container #mychatroomsheading #circledArrow {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-  -webkit-transition: -webkit-transform 0.8s ease-in-out;
-  transition: -webkit-transform 0.8s ease-in-out;
-  transition: transform 0.8s ease-in-out;
-  transition: transform 0.8s ease-in-out, -webkit-transform 0.8s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 
 #outer-div #left-outer #left #mychatroomsheading-container #mychatroomsheading #circledArrow.open {
@@ -151,64 +163,74 @@ hr {
           align-items: center;
 }
 
-#outer-div #left-outer #left .mychatrooms-li-element:before {
-  content: '#';
-  color: #3b3a4a;
-  font-size: 1.4rem;
-  margin-right: 10px;
+#outer-div #left-outer #left #left-second-half {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+#outer-div #left-outer #left #buttons-container {
+  width: 100%;
 }
 
 #outer-div #left-outer #left button {
-  border-radius: 25px;
-  width: 100%;
-  margin-bottom: 20px;
-  height: 46px;
-  padding: 10px 10px 10px 10px;
+  border-radius: 0;
+  width: 175px;
+  padding: 20px;
   text-align: center;
   border: none;
+  border-right: 1px solid #3b3a4a;
   font-size: 1.2rem;
   font-family: "Quicksand", sans-serif;
   color: #3b3a4a;
   background: #f2f2f4;
+  opacity: 0.8;
 }
 
-#outer-div #left-outer #left .buttons-container {
-  position: relative;
-}
-
-#outer-div #left-outer #left .buttons-container svg {
-  position: absolute;
-  top: 8px;
-  left: 5px;
-  pointer-events: none;
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
-  height: 30px;
-}
-
-#outer-div #left-outer #left #mychatroomspluslist:hover,
-#outer-div #left-outer #left button:hover,
 #outer-div #left-outer #left button:focus,
 #outer-div #left-outer #left button:active {
   outline: 0px !important;
   -webkit-appearance: none;
-  -webkit-box-shadow: 0px 1px 3px #1ebad6, 0px -0.7px 3px #1ebad6;
-          box-shadow: 0px 1px 3px #1ebad6, 0px -0.7px 3px #1ebad6;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+#outer-div #left-outer #left button:hover {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  background: #1ebad6;
 }
 
 #outer-div #left-outer #left #mychatroomspluslist {
-  border-radius: 25px;
-  padding: 10px 15px 5px 15px;
   border: none;
-  color: #161626;
+  color: #c0c0c8;
+  background: #3b3a4a;
+  margin-bottom: 30px;
+  opacity: 0.8;
+}
+
+#outer-div #left-outer #left #mychatroomspluslist a {
   background: #f2f2f4;
-  margin-bottom: 20px;
-  margin-top: 30px;
+  width: 100%;
+  padding: 20px;
+  border-top: 1px solid #3b3a4a;
+  color: #161626;
+}
+
+#outer-div #left-outer #left #mychatroomspluslist a:hover {
+  background: #3b3a4a;
+  color: #f2f2f4;
 }
 
 #outer-div #right-outer {
   width: 100%;
-  margin-right: 300px;
+  margin-right: 350px;
   padding: 20px;
   background: #f2f2f4;
   overflow-y: auto;
