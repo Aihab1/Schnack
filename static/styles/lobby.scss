@@ -36,10 +36,11 @@ hr {
   display: flex;
   height: 100vh;
   #left-outer {
+    z-index: 10;
     // margin: 15px;
-    // padding: 20px; 
+    // padding: 20px;
     background: linear-gradient(170deg, rgb(9, 12, 31), rgb(21, 21, 49));
-    // background: $premium_dark_blue;  
+    // background: $premium_dark_blue;
     position: fixed;
     right: 0;
     height: 100%;
@@ -67,7 +68,7 @@ hr {
         align-items: center;
         // font-weight: bold;
         cursor: pointer;
-        
+
         #collapseArrow {
           height: 25px;
           width: 25px;
@@ -88,7 +89,7 @@ hr {
         margin-right: 10px;
         background-color: #00c957;
       }
-      #collapseLogout{
+      #collapseLogout {
         // background: $premium_dark_grey;
         background: $premium_dark_blue;
         opacity: 0.8;
@@ -102,7 +103,7 @@ hr {
       }
       #mychatroomsheading-container {
         // background: yellow;
-        
+
         display: flex;
         svg {
           margin-right: 10px;
@@ -133,7 +134,7 @@ hr {
           }
         }
       }
-      .mychatrooms-li-element{
+      .mychatrooms-li-element {
         // padding-left: 10px;
         display: flex;
         align-items: center;
@@ -145,18 +146,18 @@ hr {
       //   margin-right: 10px;
       //   // font-weight: bold;
       // }
-      #left-second-half{
+      #left-second-half {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         width: 100%;
       }
-      #buttons-container{
+      #buttons-container {
         width: 100%;
       }
       button {
         transition: all 0.5s ease-in-out;
-        border-radius: 0;
+        border-radius: 7px;
         margin: 15px 0px;
         // width: 175px;
         width: 145px;
@@ -170,51 +171,53 @@ hr {
         font-weight: bold;
         font-family: "Quicksand", sans-serif;
         color: $premium_dark_grey;
-        background: $white;
-        opacity: 0.8
+        background: white;
+        opacity: 0.8;
       }
-      
+
       button:active {
         outline: 0px !important;
         -webkit-appearance: none;
         box-shadow: none !important;
         letter-spacing: 2px;
       }
-      button:focus{
+      button:focus {
         outline: 0px !important;
         -webkit-appearance: none;
         box-shadow: none !important;
       }
-      button:hover{
+      button:hover {
         outline: 0px !important;
         -webkit-appearance: none;
         box-shadow: none !important;
-        background: $premium_light_blue;    
+        background: $premium_light_blue;
       }
       // #mychatroomspluslist:hover{
       //   opacity: 1;
       // }
-      #mychatroomspluslist{
-        // border-radius: 25px;      
+      #mychatroomspluslist {
+        // border-radius: 25px;
         // padding: 20px 20px 10px 20px;
         // text-align: center;
         border: none;
-        color: $premium_light_grey; 
+        color: $premium_light_grey;
         background: $premium_dark_grey;
         margin-bottom: 30px;
         // margin-top: 30px;
         opacity: 0.8;
 
-        a{
+        a {
           // background: $premium_dark_grey;
           transition: all 0.3s ease;
-          background: $white;
+          background: white;
           width: 100%;
           padding: 20px;
-          border-top: 1px solid $premium_dark_grey;
+          // border-top: 1px solid $premium_dark_grey;
           color: $premium_dark_blue;
+          border-radius: 7px;
+          margin: 0 7px 5px 7px;
         }
-        a:hover{
+        a:hover {
           background: $premium_dark_grey;
           color: $white;
         }
@@ -224,25 +227,140 @@ hr {
   #right-outer {
     width: 100%;
     margin-right: 350px;
-    padding: 20px;
+    padding: 0;
     background: $white;
     overflow-y: auto;
-    #messages-container{
-      height: 400px;
-      background: pink;
-      overflow-y: auto; 
+    #messages-container {
+      // height: 80vh;
+      // background: pink;
+      width: 100%;
+      height: 70vh;
+      overflow-y: auto;
+      margin-top: 68px;
+      margin-bottom: 70px;
+      overflow-x: hidden;
+      background: $premium_light_blue;
     }
-    #messages{
+    #messages {
+      // height: 60vh;
+      padding: 15px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      // overflow-y: auto; 
+      // color: $white;
+      width: 100%;
+      
+      // overflow-y: auto;
     }
-    #right{
-      #chatroom-heading{
+    #right {
+      // width: 100%;
+      #chatroom-heading {
         font-weight: bold;
         color: $premium_dark_grey;
+        width: 100%;
+        background: $white;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 10px;
+        margin: 0;
+        position: fixed;
+        top: 0;
+        z-index: 1;
+      }
+      #input-container-outer{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: $white;
+        padding-right: 350px;
+      }
+      #input-container {
+        position: relative;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        input {
+          width: 100%;
+          // margin: 0 15px;
+          border-radius: 7px;
+          height: 46px;
+          padding: 10px 50px 10px 15px;
+          font-size: 1.2rem;
+          background: $white;
+          color: $premium_dark_grey;
+          outline: 0px !important;
+          -webkit-appearance: none;
+          border: none;
+          // box-shadow: none !important;
+          box-shadow: 0px 1px 3px $premium_dark_blue,
+            0px -0.7px 3px $premium_dark_blue;
+        }
+        input:hover,
+        input:focus,
+        input:active {
+          outline: 0px !important;
+          -webkit-appearance: none;
+          border: none;
+          // box-shadow: none !important;
+          box-shadow: 0px 2px 3px $premium_dark_blue,
+            0px -1.4px 3px $premium_dark_blue;
+        }
+        button {
+          border: none;
+          outline: none;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 25px;
+          svg {
+            transition: all 1s ease-in-out;
+            height: 30px;
+            fill: $premium_dark_blue;
+          }
+        }
+        button:hover svg {
+          fill: $premium_light_blue;
+        }
+        button:disabled {
+          opacity: 0.5;
+        }
       }
     }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  //Custom Scrollbar
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-track:hover {
+    background-color: transparent;
+  }
+
+  /* scrollbar itself */
+  ::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    // border-radius: 16px;
+    border: 5px solid transparent;
+    opacity: 0.5;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: $premium_light_blue;
+    border: 4px solid transparent;
+    opacity: 0.8;
+  }
+
+  /* set button(top and bottom of the scrollbar) */
+  ::-webkit-scrollbar-button {
+    display: none;
   }
 }

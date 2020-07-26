@@ -172,10 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const li = document.createElement('li');
         li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.msg}`;
         document.querySelector('#messages').append(li);
-        // var scrollingElement = document.querySelector('#messages-container');
-        // if (scrollingElement.scrollTop > scrollingElement.scrollHeight - 100) {
-        //     scrollingElement.scrollTop = scrollingElement.scrollHeight;
-        // }
+        var scrollingElement = document.querySelector('#messages-container');
+        if (scrollingElement.scrollTop > scrollingElement.scrollHeight - scrollingElement.clientHeight - 100) {
+            scrollingElement.scrollTop = scrollingElement.scrollHeight;
+        }
     });
 
     //disable enable functioning for create button inside modal
