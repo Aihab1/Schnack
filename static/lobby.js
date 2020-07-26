@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const li = document.createElement('li');
         li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.msg}`;
         document.querySelector('#messages').append(li);
-        var scrollingElement = document.querySelector('#messages-container');
+        var scrollingElement = document.querySelector('#messages');
         if (scrollingElement.scrollTop > scrollingElement.scrollHeight - scrollingElement.clientHeight - 100) {
             scrollingElement.scrollTop = scrollingElement.scrollHeight;
         }
@@ -360,7 +360,7 @@ function load_page(name) {
             document.querySelector('#messages').append(li);
         });
 
-        scrollingElement = document.querySelector('#messages-container');
+        scrollingElement = document.querySelector('#messages');
         scrollingElement.scrollTop = scrollingElement.scrollHeight;
 
         // Push state to URL.

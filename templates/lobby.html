@@ -217,12 +217,12 @@
 
     const mybutton = document.querySelector('#send');
     mybutton.addEventListener("click", () => {
-        scrollingElement = document.querySelector('#messages-container');
+        scrollingElement = document.querySelector('#messages');
         // scrollingElement.scrollTop = scrollingElement.scrollHeight;
-        console.log(scrollingElement.scrollTop);
+        // console.log(scrollingElement.scrollTop);
         scrollingElement.scrollTop = scrollingElement.scrollHeight - scrollingElement.clientHeight;
-        console.log(scrollingElement.scrollTop);
-        console.log(scrollingElement.scrollHeight);
+        // console.log(scrollingElement.scrollTop);
+        // console.log(scrollingElement.scrollHeight);
     });
 </script>
 

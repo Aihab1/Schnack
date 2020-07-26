@@ -256,27 +256,27 @@ hr {
 
 #outer-div #right-outer #messages-container {
   width: 100%;
-  height: 70vh;
-  overflow-y: auto;
-  margin-top: 68px;
-  margin-bottom: 70px;
+  height: 100vh;
+  padding-bottom: 70px;
+  padding-top: 68px;
   overflow-x: hidden;
   background: #1ebad6;
-}
-
-#outer-div #right-outer #messages {
-  padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+#outer-div #right-outer #messages {
+  padding: 15px;
   width: 100%;
+  overflow-y: auto;
+  background: pink;
+  margin: 0;
+  margin-top: auto;
 }
 
 #outer-div #right-outer #right #chatroom-heading {
@@ -284,9 +284,7 @@ hr {
   color: #3b3a4a;
   width: 100%;
   background: #f2f2f4;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 10px;
+  padding: 10px 15px;
   margin: 0;
   position: fixed;
   top: 0;
