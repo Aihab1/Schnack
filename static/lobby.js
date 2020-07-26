@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // When a new message is announced, add to the unordered list
     socket.on('announce message', data => {
         const li = document.createElement('li');
-        li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.msg}`;
+        li.innerHTML = `<div class="usernameplustime"><div class="username-div">${data.username.toUpperCase()}</div><div class="time-div"> ${data.date} at ${data.time}</div></div><div class="content-div"> ${data.msg}</div>`;
         document.querySelector('#messages').append(li);
         var scrollingElement = document.querySelector('#messages');
         if (scrollingElement.scrollTop > scrollingElement.scrollHeight - scrollingElement.clientHeight - 100) {
@@ -337,7 +337,7 @@ window.onpopstate = e => {
     document.querySelector('#chatroom-heading').innerHTML = `# ${document.title}`;
     data_temp.forEach(data => {
         const li = document.createElement('li');
-        li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.message}`;
+        li.innerHTML = `<div class="usernameplustime"><div class="username-div">${data.username.toUpperCase()}</div><div class="time-div"> ${data.date} at ${data.time}</div></div><div class="content-div"> ${data.message}</div>`;
         document.querySelector('#messages').append(li);
     });
 };
@@ -356,7 +356,7 @@ function load_page(name) {
 
         data_temp.forEach(data => {
             const li = document.createElement('li');
-            li.innerHTML = `<b>${data.username.toUpperCase()}</b> Today at ${data.time}: ${data.message}`;
+            li.innerHTML = `<div class="usernameplustime"><div class="username-div">${data.username.toUpperCase()}</div><div class="time-div"> ${data.date} at ${data.time}</div></div><div class="content-div"> ${data.message}</div>`;
             document.querySelector('#messages').append(li);
         });
 
