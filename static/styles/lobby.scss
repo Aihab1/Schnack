@@ -28,7 +28,7 @@ button:focus,
 button:hover {
   outline: 0px !important;
   -webkit-appearance: none;
-  box-shadow: none !important;
+  // box-shadow: none !important;
 }
 a {
   color: $premium_light_blue;
@@ -49,32 +49,30 @@ hr {
   height: 100vh;
   #left-outer {
     z-index: 10;
-    // margin: 15px;
-    // padding: 20px;
-    background: linear-gradient(170deg, rgb(9, 12, 31), rgb(21, 21, 49));
-    // background: $premium_dark_blue;
+    // background: linear-gradient(170deg, rgb(9, 12, 31), rgb(21, 21, 49));
+    background: $white;
+    // border-left: 1px ridge $premium_light_grey;
     position: fixed;
     right: 0;
     height: 100%;
     width: 350px;
     overflow-y: auto;
     overflow-x: hidden;
-    // border-top-right-radius: 10px;
-    // border-bottom-right-radius: 10px;
-    // box-shadow: 5px 0px 1px $premium_light_grey;
     #left {
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       width: 100%;
+      // border-left: 1px solid $premium_light_grey;
+
       #myusername {
-        box-shadow: 5px 0px 5px $premium_dark_grey;
+        box-shadow: -5px 0 5px $premium_dark_grey;
         margin: 0;
-        background: $premium_dark_blue;
-        opacity: 0.8;
+        background: $premium_dark_grey;
+        // opacity: 0.8;
         width: 100%;
-        padding: 20px;
+        padding: 21px;
         color: $white;
         font-size: 1.4rem;
         display: flex;
@@ -104,8 +102,8 @@ hr {
       }
       #collapseLogout {
         // background: $premium_dark_grey;
-        background: $premium_dark_blue;
-        opacity: 0.8;
+        background: $premium_dark_grey;
+        // opacity: 0.8;
         width: 100%;
         margin-top: -20px;
         padding-bottom: 10px;
@@ -132,7 +130,8 @@ hr {
           display: flex;
           align-items: center;
           // background: white;
-          color: $premium_light_grey;
+          color: $premium_dark_grey;
+          font-weight: bold;
           font-size: 1.2rem;
           // font-weight: bold;
           #circledArrow {
@@ -179,24 +178,28 @@ hr {
         color: $premium_dark_grey;
         background: white;
         opacity: 0.8;
+        box-shadow: 1px 1px 3px $premium_light_grey,
+          -1px -0.7px 3px $premium_light_grey;
       }
 
       button:active {
         outline: 0px !important;
         -webkit-appearance: none;
-        box-shadow: none !important;
+        // box-shadow: none !important;
         letter-spacing: 2px;
       }
       button:focus {
         outline: 0px !important;
         -webkit-appearance: none;
-        box-shadow: none !important;
+        // box-shadow: none !important;
       }
       button:hover {
         outline: 0px !important;
         -webkit-appearance: none;
-        box-shadow: none !important;
-        background: $premium_light_blue;
+        // box-shadow: none !important;
+        color: $premium_light_blue;
+        box-shadow: 1px 1px 7px $premium_light_grey,
+          -1px -0.7px 7px $premium_light_grey;
       }
 
       #mychatroomspluslist {
@@ -204,22 +207,24 @@ hr {
         // padding: 20px 20px 10px 20px;
         // text-align: center;
         border: none;
-        color: $premium_light_grey;
-        background: $premium_dark_grey;
+        color: $premium_dark_grey;
+        background: $white;
         margin-bottom: 30px;
         // margin-top: 30px;
-        opacity: 0.8;
+        // opacity: 0.8;
 
         a {
           // background: $premium_dark_grey;
           transition: all 0.3s ease;
           background: white;
           width: 100%;
-          padding: 20px;
+          padding: 10px 20px;
           // border-top: 1px solid $premium_dark_grey;
           color: $premium_dark_blue;
           border-radius: 7px;
           margin: 0 7px 5px 7px;
+          box-shadow: 1px 1px 3px $premium_light_grey,
+            -1px -0.7px 3px $premium_light_grey;
         }
         a:hover {
           background: $premium_dark_grey;
@@ -327,7 +332,7 @@ hr {
           height: 46px;
           padding: 10px 50px 10px 15px;
           font-size: 1.2rem;
-          background: $white;
+          background: white;
           color: $premium_dark_grey;
           outline: 0px !important;
           -webkit-appearance: none;
@@ -353,7 +358,9 @@ hr {
           top: 50%;
           transform: translateY(-50%);
           right: 25px;
+          background: transparent;
           svg {
+            background: transparent;
             transition: all 1s ease-in-out;
             height: 30px;
             fill: $premium_dark_blue;
@@ -386,34 +393,88 @@ hr {
   li {
     width: 100%;
     a {
-      transition: all 0.5s ease-in-out;
+      transition: all 0.2s ease-in;
       display: inline-block;
       width: 100%;
       color: $premium_dark_grey;
       height: 46px;
-      padding: 10px;
+      padding: 10px 20px;
       background: white;
       opacity: 0.8;
       margin-bottom: 7px;
       border-radius: 5px;
       box-shadow: 1px 1px 3px $premium_light_grey,
-            -1px -0.7px 3px $premium_light_grey;
+        -1px -0.7px 3px $premium_light_grey;
     }
-    a:hover{
-      // background: $premium_dark_blue;
-      // color: $premium_light_grey;
-      font-size: 1.1rem;
+    a:hover {
       box-shadow: 1px 1px 7px $premium_light_grey,
-            -1px -0.7px 7px $premium_light_grey;
+        -1px -0.7px 7px $premium_light_grey;
+      background: $premium_dark_grey;
+      color: $white;
     }
+  }
+  #namechatroom {
+    height: 46px;
+    width: 100%;
+    box-shadow: 1px 1px 3px $premium_light_grey,
+      -1px -0.7px 3px $premium_light_grey;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    padding: 10px 20px;
+  }
+  #namechatroom:hover,
+  #namechatroom:active,
+  #namechatroom:focus {
+    box-shadow: 1px 1px 7px $premium_light_grey,
+      -1px -0.7px 7px $premium_light_grey;
+  }
+  .form-check {
+    margin-top: 20px;
+  }
+  #private-div {
+    width: 100%;
+    .password4chatroom {
+      // transition: all 0.5s ease-in-out;
+      height: 46px;
+      width: 100%;
+      box-shadow: 1px 1px 3px $premium_light_grey,
+        -1px -0.7px 3px $premium_light_grey;
+      border: none;
+      outline: none;
+      border-radius: 7px;
+      padding: 10px 20px;
+    }
+    .password4chatroom:hover,
+    .password4chatroom:active,
+    .password4chatroom:focus {
+      box-shadow: 1px 1px 7px $premium_light_grey,
+        -1px -0.7px 7px $premium_light_grey;
+    }
+  }
+  #checkpassword {
+    height: 46px;
+    width: 100%;
+    box-shadow: 1px 1px 3px $premium_light_grey,
+      -1px -0.7px 3px $premium_light_grey;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    padding: 10px 20px;
+  }
+  #checkpassword:hover,
+  #checkpassword:active,
+  #checkpassword:focus {
+    box-shadow: 1px 1px 7px $premium_light_grey,
+      -1px -0.7px 7px $premium_light_grey;
   }
 }
 .modal-footer {
   background: $white;
   color: $premium_dark_grey;
   border: none;
-  button{
-    background: $white;
+  button {
+    background: white;
     color: $premium_dark_grey;
     outline: 0px !important;
     -webkit-appearance: none;
@@ -421,21 +482,22 @@ hr {
     border: 1px solid $premium_light_blue;
     opacity: 0.8;
   }
-  button:hover{
+  button:hover {
     background: $premium_light_blue;
     color: $white;
     opacity: 0.8;
   }
   button:disabled {
     opacity: 0.5;
-    background: $white;
+    background: white;
     outline: 0px !important;
     -webkit-appearance: none;
     box-shadow: none !important;
     color: $premium_light_grey;
     border: 1px solid $premium_light_grey;
   }
-  button:focus, button:active {
+  button:focus,
+  button:active {
     outline: 0px !important;
     -webkit-appearance: none;
     box-shadow: none !important;
@@ -468,7 +530,7 @@ hr {
     opacity: 0.8;
   }
 
-  /* set button(top and bottom of the scrollbar) */
+  /* set (top and bottom of the scrollbar) */
   ::-webkit-scrollbar-button {
     display: none;
   }

@@ -23,8 +23,6 @@ button:focus,
 button:hover {
   outline: 0px !important;
   -webkit-appearance: none;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
 }
 
 a {
@@ -52,7 +50,7 @@ hr {
 
 #outer-div #left-outer {
   z-index: 10;
-  background: linear-gradient(170deg, #090c1f, #151531);
+  background: #f2f2f4;
   position: fixed;
   right: 0;
   height: 100%;
@@ -77,13 +75,12 @@ hr {
 }
 
 #outer-div #left-outer #left #myusername {
-  -webkit-box-shadow: 5px 0px 5px #3b3a4a;
-          box-shadow: 5px 0px 5px #3b3a4a;
+  -webkit-box-shadow: -5px 0 5px #3b3a4a;
+          box-shadow: -5px 0 5px #3b3a4a;
   margin: 0;
-  background: #161626;
-  opacity: 0.8;
+  background: #3b3a4a;
   width: 100%;
-  padding: 20px;
+  padding: 21px;
   color: #f2f2f4;
   font-size: 1.4rem;
   display: -webkit-box;
@@ -121,8 +118,7 @@ hr {
 }
 
 #outer-div #left-outer #left #collapseLogout {
-  background: #161626;
-  opacity: 0.8;
+  background: #3b3a4a;
   width: 100%;
   margin-top: -20px;
   padding-bottom: 10px;
@@ -156,7 +152,8 @@ hr {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #c0c0c8;
+  color: #3b3a4a;
+  font-weight: bold;
   font-size: 1.2rem;
 }
 
@@ -215,37 +212,34 @@ hr {
   color: #3b3a4a;
   background: white;
   opacity: 0.8;
+  -webkit-box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+          box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
 }
 
 #outer-div #left-outer #left button:active {
   outline: 0px !important;
   -webkit-appearance: none;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
   letter-spacing: 2px;
 }
 
 #outer-div #left-outer #left button:focus {
   outline: 0px !important;
   -webkit-appearance: none;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
 }
 
 #outer-div #left-outer #left button:hover {
   outline: 0px !important;
   -webkit-appearance: none;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  background: #1ebad6;
+  color: #1ebad6;
+  -webkit-box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+          box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
 }
 
 #outer-div #left-outer #left #mychatroomspluslist {
   border: none;
-  color: #c0c0c8;
-  background: #3b3a4a;
+  color: #3b3a4a;
+  background: #f2f2f4;
   margin-bottom: 30px;
-  opacity: 0.8;
 }
 
 #outer-div #left-outer #left #mychatroomspluslist a {
@@ -253,10 +247,12 @@ hr {
   transition: all 0.3s ease;
   background: white;
   width: 100%;
-  padding: 20px;
+  padding: 10px 20px;
   color: #161626;
   border-radius: 7px;
   margin: 0 7px 5px 7px;
+  -webkit-box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+          box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
 }
 
 #outer-div #left-outer #left #mychatroomspluslist a:hover {
@@ -389,7 +385,7 @@ hr {
   height: 46px;
   padding: 10px 50px 10px 15px;
   font-size: 1.2rem;
-  background: #f2f2f4;
+  background: white;
   color: #3b3a4a;
   outline: 0px !important;
   -webkit-appearance: none;
@@ -416,9 +412,11 @@ hr {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   right: 25px;
+  background: transparent;
 }
 
 #outer-div #right-outer #right #input-container button svg {
+  background: transparent;
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
   height: 30px;
@@ -457,13 +455,13 @@ hr {
 }
 
 .modal-body li a {
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
   display: inline-block;
   width: 100%;
   color: #3b3a4a;
   height: 46px;
-  padding: 10px;
+  padding: 10px 20px;
   background: white;
   opacity: 0.8;
   margin-bottom: 7px;
@@ -473,7 +471,70 @@ hr {
 }
 
 .modal-body li a:hover {
-  font-size: 1.1rem;
+  -webkit-box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+          box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+  background: #3b3a4a;
+  color: #f2f2f4;
+}
+
+.modal-body #namechatroom {
+  height: 46px;
+  width: 100%;
+  -webkit-box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+          box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  padding: 10px 20px;
+}
+
+.modal-body #namechatroom:hover,
+.modal-body #namechatroom:active,
+.modal-body #namechatroom:focus {
+  -webkit-box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+          box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+}
+
+.modal-body .form-check {
+  margin-top: 20px;
+}
+
+.modal-body #private-div {
+  width: 100%;
+}
+
+.modal-body #private-div .password4chatroom {
+  height: 46px;
+  width: 100%;
+  -webkit-box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+          box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  padding: 10px 20px;
+}
+
+.modal-body #private-div .password4chatroom:hover,
+.modal-body #private-div .password4chatroom:active,
+.modal-body #private-div .password4chatroom:focus {
+  -webkit-box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+          box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+}
+
+.modal-body #checkpassword {
+  height: 46px;
+  width: 100%;
+  -webkit-box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+          box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  padding: 10px 20px;
+}
+
+.modal-body #checkpassword:hover,
+.modal-body #checkpassword:active,
+.modal-body #checkpassword:focus {
   -webkit-box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
           box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
 }
@@ -485,7 +546,7 @@ hr {
 }
 
 .modal-footer button {
-  background: #f2f2f4;
+  background: white;
   color: #3b3a4a;
   outline: 0px !important;
   -webkit-appearance: none;
@@ -503,7 +564,7 @@ hr {
 
 .modal-footer button:disabled {
   opacity: 0.5;
-  background: #f2f2f4;
+  background: white;
   outline: 0px !important;
   -webkit-appearance: none;
   -webkit-box-shadow: none !important;
@@ -512,7 +573,8 @@ hr {
   border: 1px solid #c0c0c8;
 }
 
-.modal-footer button:focus, .modal-footer button:active {
+.modal-footer button:focus,
+.modal-footer button:active {
   outline: 0px !important;
   -webkit-appearance: none;
   -webkit-box-shadow: none !important;
@@ -541,7 +603,7 @@ hr {
     border: 4px solid transparent;
     opacity: 0.8;
   }
-  /* set button(top and bottom of the scrollbar) */
+  /* set (top and bottom of the scrollbar) */
   ::-webkit-scrollbar-button {
     display: none;
   }

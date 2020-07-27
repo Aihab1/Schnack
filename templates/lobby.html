@@ -78,13 +78,15 @@
                             </h1>
                         </div>
                         <div class="collapse show" id="collapseChatrooms">
-                            <ul id="mychatrooms">
-                                {% for chatroom in mychatrooms %}
-                                <li class="list-unstyled mychatrooms-li-element">
-                                    <a href="" class="mychatroom-links">{{chatroom}}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
+                            <div style="padding: 5px 0px">
+                                <ul id="mychatrooms">
+                                    {% for chatroom in mychatrooms %}
+                                    <li class="list-unstyled mychatrooms-li-element">
+                                        <a href="" class="mychatroom-links">{{chatroom}}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,8 +128,10 @@
                     <h5 class="modal-title" id="joinchatroom">Wanna Hang Out?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <svg class="svg-icon" viewBox="0 0 20 20" height="20">
-							<path fill="#f2f2f4" d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
-						</svg>
+                            <path fill="#3b3a4a"
+                                d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -163,12 +167,14 @@
                     <h5 class="modal-title" id="joinlobbytitle">Tryna break in?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <svg class="svg-icon" viewBox="0 0 20 20" height="20">
-							<path fill="#f2f2f4" d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
-						</svg>
+                            <path fill="#3b3a4a"
+                                d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
                 <div class="modal-body" id="joinlobbypasswordheading">
-                    <h6>Password</h6>
+                    <h6>Gotcha! Enter the password</h6>
                     <input type="password" id="checkpassword" placeholder="Password" class="form-control">
                 </div>
                 <div class="modal-footer">
@@ -187,14 +193,16 @@
                     <h5 class="modal-title" id="createchatroom">Oh, a Chatroom!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <svg class="svg-icon" viewBox="0 0 20 20" height="20">
-							<path fill="#f2f2f4" d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
-						</svg>
+                            <path fill="#3b3a4a"
+                                d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
                 <div class="modal-body">
                     <h6>Name</h6>
                     <input type="text" id="namechatroom" maxlength="25" placeholder="{{username|capitalize}}'s Chatroom"
-                        autocomplete="off" spellcheck="false" class="form-control">
+                        autocomplete="off" spellcheck="false">
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="checkprivate">
                         <label class="form-check-label" for="checkprivate">Private</label>

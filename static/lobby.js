@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (document.querySelector('#joinlobbypasswordheading').innerHTML === "We discourage you to share any sensitive information such as passwords, credit card, bank details etc.") {
                 document.querySelector('#joinlobbypasswordheading').innerHTML = "";
                 h6 = document.createElement('h6');
-                h6.innerHTML = "Password";
+                h6.innerHTML = "Gotcha! Enter the Password";
                 passwordfield = document.createElement('input');
                 passwordfield.className = "form-control";
                 passwordfield.setAttribute('type', 'password');
@@ -198,11 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (document.querySelector('#namechatroom').value.length > 0 && exists === false) {
             document.querySelector('#create').disabled = false;
-            document.querySelector('#namechatroom').style.border = "3px solid green";
+            document.querySelector('#namechatroom').style.boxShadow = "1px 1px 3px #00c957, -1px -0.7px 3px #00c957";
         }
         else {
             document.querySelector('#create').disabled = true;
-            document.querySelector('#namechatroom').style.border = "3px solid red";
+            document.querySelector('#namechatroom').style.boxShadow = "1px 1px 3px red, -1px -0.7px 3px red";
         }
 
     };
@@ -218,7 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
             inputpass.setAttribute('type', 'text');
             inputpass.setAttribute('autocomplete', 'off');
             inputpass.setAttribute('spellcheck', 'false');
-            inputpass.className = 'password4chatroom form-control';
+            inputpass.setAttribute('placeholder', 'Set a password');
+            inputpass.className = 'password4chatroom';
             label.innerHTML = 'Password';
             privatediv.append(label);
             privatediv.append(inputpass);
