@@ -18,6 +18,18 @@ $white: #f2f2f4;
   font-family: "Quicksand", sans-serif;
   list-style: none;
 }
+button {
+  transition: all 1s ease-in-out;
+  border: none;
+  outline: none;
+}
+button:active,
+button:focus,
+button:hover {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+}
 a {
   color: $premium_light_blue;
 }
@@ -104,7 +116,6 @@ hr {
       }
       #mychatroomsheading-container {
         // background: yellow;
-
         display: flex;
         svg {
           margin-right: 10px;
@@ -140,13 +151,7 @@ hr {
         display: flex;
         align-items: center;
       }
-      // .mychatrooms-li-element:before{
-      //   content: '#';
-      //   color: $premium_dark_grey;
-      //   font-size: 1.4rem;
-      //   margin-right: 10px;
-      //   // font-weight: bold;
-      // }
+
       #left-second-half {
         display: flex;
         align-items: center;
@@ -193,9 +198,7 @@ hr {
         box-shadow: none !important;
         background: $premium_light_blue;
       }
-      // #mychatroomspluslist:hover{
-      //   opacity: 1;
-      // }
+
       #mychatroomspluslist {
         // border-radius: 25px;
         // padding: 20px 20px 10px 20px;
@@ -254,32 +257,33 @@ hr {
       background: $white;
       margin: 0;
       margin-top: auto;
-      li{
-        overflow-wrap: anywhere; 
+      li {
+        overflow-wrap: anywhere;
       }
-      .usernameplustime{
+      .usernameplustime {
         padding-top: 10px;
         display: flex;
         width: 100%;
         align-items: center;
-        .username-div{
+        flex-wrap: wrap;
+        .username-div {
           font-weight: bold;
           font-size: 1.2rem;
           color: $premium_dark_grey;
           margin-right: 10px;
         }
-        .time-div{
+        .time-div {
           font-size: 0.9rem;
           color: $premium_light_blue;
           opacity: 0.8;
           margin-top: 3px;
           cursor: default;
         }
-        .time-div:hover{
+        .time-div:hover {
           color: $premium_dark_grey;
         }
       }
-      .content-div{
+      .content-div {
         width: 100%;
         color: $premium_dark_grey;
         border-bottom: 1px solid $premium_light_grey;
@@ -365,7 +369,78 @@ hr {
     }
   }
 }
-
+.modal-content {
+  border: none;
+}
+.modal-header {
+  background: $white;
+  border: none;
+  h5 {
+    color: $premium_dark_blue;
+  }
+}
+.modal-body {
+  background: $white;
+  color: $premium_dark_grey;
+  border: none;
+  li {
+    width: 100%;
+    a {
+      transition: all 0.5s ease-in-out;
+      display: inline-block;
+      width: 100%;
+      color: $premium_dark_grey;
+      height: 46px;
+      padding: 10px;
+      background: white;
+      opacity: 0.8;
+      margin-bottom: 7px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 3px $premium_light_grey,
+            -1px -0.7px 3px $premium_light_grey;
+    }
+    a:hover{
+      // background: $premium_dark_blue;
+      // color: $premium_light_grey;
+      font-size: 1.1rem;
+      box-shadow: 1px 1px 7px $premium_light_grey,
+            -1px -0.7px 7px $premium_light_grey;
+    }
+  }
+}
+.modal-footer {
+  background: $white;
+  color: $premium_dark_grey;
+  border: none;
+  button{
+    background: $white;
+    color: $premium_dark_grey;
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+    border: 1px solid $premium_light_blue;
+    opacity: 0.8;
+  }
+  button:hover{
+    background: $premium_light_blue;
+    color: $white;
+    opacity: 0.8;
+  }
+  button:disabled {
+    opacity: 0.5;
+    background: $white;
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+    color: $premium_light_grey;
+    border: 1px solid $premium_light_grey;
+  }
+  button:focus, button:active {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+  }
+}
 @media screen and (min-width: 800px) {
   //Custom Scrollbar
   ::-webkit-scrollbar {

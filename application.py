@@ -84,7 +84,7 @@ def message(data):
     now = datetime.now()
     today = datetime.now().date()
     time = now.strftime("%H:%M")
-    date = today.strftime('%b, %d %Y')
+    date = today.strftime('%b %d, %Y')
     
     if "allmessages" not in messages[data["namechatroom"]]:
         messages[data["namechatroom"]]["allmessages"] = []

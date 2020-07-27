@@ -11,6 +11,22 @@
   list-style: none;
 }
 
+button {
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  border: none;
+  outline: none;
+}
+
+button:active,
+button:focus,
+button:hover {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 a {
   color: #1ebad6;
 }
@@ -294,6 +310,8 @@ hr {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 #outer-div #right-outer #messages .usernameplustime .username-div {
@@ -413,6 +431,92 @@ hr {
 
 #outer-div #right-outer #right #input-container button:disabled {
   opacity: 0.5;
+}
+
+.modal-content {
+  border: none;
+}
+
+.modal-header {
+  background: #f2f2f4;
+  border: none;
+}
+
+.modal-header h5 {
+  color: #161626;
+}
+
+.modal-body {
+  background: #f2f2f4;
+  color: #3b3a4a;
+  border: none;
+}
+
+.modal-body li {
+  width: 100%;
+}
+
+.modal-body li a {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  display: inline-block;
+  width: 100%;
+  color: #3b3a4a;
+  height: 46px;
+  padding: 10px;
+  background: white;
+  opacity: 0.8;
+  margin-bottom: 7px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+          box-shadow: 1px 1px 3px #c0c0c8, -1px -0.7px 3px #c0c0c8;
+}
+
+.modal-body li a:hover {
+  font-size: 1.1rem;
+  -webkit-box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+          box-shadow: 1px 1px 7px #c0c0c8, -1px -0.7px 7px #c0c0c8;
+}
+
+.modal-footer {
+  background: #f2f2f4;
+  color: #3b3a4a;
+  border: none;
+}
+
+.modal-footer button {
+  background: #f2f2f4;
+  color: #3b3a4a;
+  outline: 0px !important;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  border: 1px solid #1ebad6;
+  opacity: 0.8;
+}
+
+.modal-footer button:hover {
+  background: #1ebad6;
+  color: #f2f2f4;
+  opacity: 0.8;
+}
+
+.modal-footer button:disabled {
+  opacity: 0.5;
+  background: #f2f2f4;
+  outline: 0px !important;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #c0c0c8;
+  border: 1px solid #c0c0c8;
+}
+
+.modal-footer button:focus, .modal-footer button:active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 @media screen and (min-width: 800px) {
