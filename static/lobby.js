@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Connect to websocket
-    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port, {transports:['websocket']});
 
     socket.on('first loaded', data => {
         //load lobby which the user last left
