@@ -8,7 +8,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
-socketio = SocketIO(app)
+socketio = SocketIO(app, ping_interval=20)
 
 # Configure session to use filesystem
 app.config["SESSION_PERMANENT"] = False
