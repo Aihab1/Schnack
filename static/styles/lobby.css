@@ -608,4 +608,122 @@ hr {
     display: none;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  #outer-div #right-outer #right #chatroom-heading {
+    font-size: 1.5rem;
+  }
+  #outer-div #left-outer #left #myusername {
+    padding: 11px 21px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    overflow-x: hidden;
+  }
+  #navbar-lite {
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    width: 48px;
+    height: 48px;
+    z-index: 12;
+    position: fixed;
+    top: 0;
+    right: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #navbar-lite .arrow1 {
+    background: #3b3a4a;
+    width: 15px;
+    height: 3px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    margin-bottom: 3px;
+  }
+  #navbar-lite .arrow2 {
+    background: #3b3a4a;
+    width: 15px;
+    height: 3px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    margin-top: 3px;
+  }
+  #outer-div #right-outer {
+    margin-right: 0;
+    width: 100%;
+  }
+  #outer-div #right-outer #right #input-container-outer {
+    padding-right: 0px;
+  }
+  #outer-div #left-outer {
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    top: 0;
+    right: -355px;
+  }
+  #outer-div #left-outer.open {
+    right: 0;
+  }
+  #navbar-lite.open {
+    top: 0;
+    right: 350px;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  #navbar-lite.open .arrow1, #navbar-lite.open .arrow2 {
+    background: #1ebad6;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #navbar-lite.open {
+    top: 6.5px;
+    left: 6.5px;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    border-radius: 50%;
+    background: #3b3a4a;
+    width: 35px;
+    height: 35px;
+  }
+  #navbar-lite.open .arrow1, #navbar-lite.open .arrow2 {
+    background: #1ebad6;
+  }
+  #outer-div #left-outer {
+    width: 100%;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    top: 0;
+    right: -102%;
+  }
+  #outer-div #left-outer #left #myusername {
+    padding: 11px 21px 11px 50px;
+  }
+  #outer-div #left-outer.open {
+    right: 0;
+  }
+  #outer-div #right-outer #right #chatroom-heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+}
 /*# sourceMappingURL=lobby.css.map */

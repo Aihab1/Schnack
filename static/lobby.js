@@ -369,5 +369,11 @@ function load_page(name) {
         history.pushState({ 'title': name, 'text': data_temp }, name, `/iwilltakeapotatochipandEATIT/${name}`);
     };
     request.send();
+
+    var left_outer2 = document.querySelector('#left-outer');
+    var navbar_button2 = document.querySelector('#navbar-lite');
+    left_outer2.classList.toggle("open");
+    navbar_button2.classList.toggle("open");
+
     return false;
 }

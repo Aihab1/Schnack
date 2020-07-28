@@ -535,3 +535,125 @@ hr {
     display: none;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  #outer-div {
+    #right-outer {
+      #right {
+        // width: 100%;
+        #chatroom-heading {
+          font-size: 1.5rem; 
+        }
+      }
+    }
+    #left-outer{
+      #left{
+        #myusername{
+          padding: 11px 21px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px){
+  body{
+    overflow-x: hidden;
+  }
+  #navbar-lite{
+    transition: all 0.5s ease-in-out;
+    width: 48px;
+    height: 48px;
+    z-index: 12;
+    position: fixed;
+    top: 0;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .arrow1{
+      background: $premium_dark_grey; 
+      width: 15px;
+      height: 3px;
+      transform: rotate(-45deg);
+      margin-bottom: 3px;
+    }
+    .arrow2{
+      background: $premium_dark_grey; 
+      width: 15px;
+      height: 3px;
+      transform: rotate(45deg);
+      margin-top: 3px;
+    }
+  }
+  #outer-div{
+    #right-outer{
+      margin-right: 0;
+      width: 100%;
+      #right{
+        #input-container-outer{
+          padding-right: 0px;
+        }
+      }
+    }
+    #left-outer{
+      transition: all 0.5s ease-in-out;
+      top: 0;
+      right: -355px;
+    }
+    #left-outer.open{
+      right: 0;
+    }
+  }
+  #navbar-lite.open{
+    top: 0;
+    right: 350px;
+    .arrow1, .arrow2{
+      background: $premium_light_blue;
+    }
+    transform: rotate(180deg);
+  }
+}
+
+@media screen and (max-width: 450px){
+  #navbar-lite.open{
+    top: 6.5px;
+    left: 6.5px;
+    .arrow1, .arrow2{
+      background: $premium_light_blue;
+    }
+    transform: rotate(180deg);
+    border-radius: 50%;
+    background: $premium_dark_grey;
+    width: 35px;
+    height: 35px;
+  }
+  #outer-div{
+    #left-outer{
+      width: 100%;
+      transition: all 0.5s ease-in-out;
+      top: 0;
+      right: -102%;
+      #left{
+        #myusername{
+          padding: 11px 21px 11px 50px;
+        }
+      }
+    }
+    #left-outer.open{
+      right: 0;
+    }
+    #right-outer {
+      #right {
+        // width: 100%;
+        #chatroom-heading {
+          display: flex;
+          align-items: center;
+          height: 48px;
+          font-size: 1.2rem; 
+        }
+      }
+    }
+  }
+}

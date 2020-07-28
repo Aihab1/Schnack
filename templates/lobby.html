@@ -21,6 +21,10 @@
 </head>
 
 <body>
+    <div id="navbar-lite">
+        <div class="arrow1"></div>
+        <div class="arrow2"></div>
+    </div>
     <div id="outer-div">
         <div id="left-outer">
             <div id="left">
@@ -237,6 +241,13 @@
         scrollingElement.scrollTop = scrollingElement.scrollHeight - scrollingElement.clientHeight;
         // console.log(scrollingElement.scrollTop);
         // console.log(scrollingElement.scrollHeight);
+    });
+
+    const left_outer = document.querySelector('#left-outer');
+    const navbar_button = document.querySelector('#navbar-lite');
+    navbar_button.addEventListener("click", () => {
+        left_outer.classList.toggle("open");
+        navbar_button.classList.toggle("open");
     });
 </script>
 
