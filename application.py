@@ -15,7 +15,6 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-SECRET_KEY = os.getenv("SECRET_KEY")
 #messages will be a dictionary of the form {"chatroomname": {"password": VAL, "allmessages": []}}
 messages = {}
 users = []
@@ -116,17 +115,11 @@ def chatroom(data):
 
 @app.route("/lobby/home", methods = ["POST"])
 def home():
-    if SECRET_KEY:
         return jsonify(messages["home"]["allmessages"])
-    else:
-        return jsonify("Secret NOT FOUND")
 
 @app.route("/lobby/<name>", methods = ["POST"])
 def chatroom(name):
-    if SECRET_KEY:
         return jsonify(messages[name]["allmessages"])
-    else:
-        return jsonify("Secret NOT FOUND")
 
 @app.route("/iwilltakeapotatochipandEATIT/<name>")
 def reloadingfunction(name):
