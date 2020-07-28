@@ -7,6 +7,7 @@ beautifulsoup4==4.9.0
 bleach==3.1.5
 cachelib==0.1
 certifi==2020.4.5.1
+cffi==1.14.1
 chardet==3.0.4
 click==7.1.2
 colorama==0.4.3
@@ -20,6 +21,10 @@ Flask==1.1.2
 Flask-Cache==0.13.1
 Flask-Session==0.3.2
 Flask-SocketIO==4.3.0
+Flask-Sockets==0.2.1
+gevent==20.6.2
+gevent-websocket==0.10.1
+greenlet==0.4.16
 gunicorn==20.0.4
 h5py==2.10.0
 idna==2.9
@@ -63,6 +68,7 @@ prometheus-client==0.8.0
 prompt-toolkit==3.0.5
 psycopg2-binary==2.8.5
 pycodestyle==2.6.0
+pycparser==2.20
 pygame==1.9.6
 Pygments==2.6.1
 pylint==2.4.4
@@ -74,6 +80,7 @@ python-engineio==3.13.0
 python-socketio==4.6.0
 pywinpty==0.5.7
 pyzmq==19.0.1
+redis==3.5.3
 regex==2020.7.14
 requests==2.23.0
 scikit-learn==0.23.1
@@ -97,3 +104,5 @@ webencodings==0.5.1
 Werkzeug==1.0.1
 wrapt==1.11.2
 zipp==3.1.0
+zope.event==4.4
+zope.interface==5.1.0
