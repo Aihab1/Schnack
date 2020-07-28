@@ -236,11 +236,10 @@
     const mybutton = document.querySelector('#send');
     mybutton.addEventListener("click", () => {
         scrollingElement = document.querySelector('#messages');
-        // scrollingElement.scrollTop = scrollingElement.scrollHeight;
-        // console.log(scrollingElement.scrollTop);
+        scrollingElement2 = document.querySelector('body');
+        
         scrollingElement.scrollTop = scrollingElement.scrollHeight - scrollingElement.clientHeight;
-        // console.log(scrollingElement.scrollTop);
-        // console.log(scrollingElement.scrollHeight);
+        scrollingElement2.scrollTop = scrollingElement2.scrollHeight - scrollingElement2.clientHeight;
     });
 
     const left_outer = document.querySelector('#left-outer');
