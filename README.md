@@ -11,6 +11,7 @@ DerSchnack is a chatting web application similar to Slack created using Flask & 
   You don't need to sign up or link an email. Just enter a username and you are good to go. You can also change your username anytime. The username is remembered if you close the website and return to it later (Unless you log out).
 * ### Sending Messages
   Once in a channel, users would be able to send text messages to others in the channel. When a user sends a message, their display name and the timestamp of the message would be associated with the message. All users in the channel would then see the new message appear on their channel page. Sending and receiving messages does NOT require reloading the page.
+> Local Storage issue on Heroku. All messages get cleared every 24 hours. Working on it.
 * ### Channel Creation
   A channel is called a chatroom. A chatroom can store a maximum of 100 messages on the server-side memory, the earlier ones are automatically deleted. You can create unlimited number of chatrooms (public/private) to continue chatting.
 * ### Private Chat room Support
@@ -28,4 +29,5 @@ DerSchnack is a chatting web application similar to Slack created using Flask & 
 ![Screenshot2](https://user-images.githubusercontent.com/55903466/88714596-a8e35300-d13a-11ea-8cbd-6e2a1f6594d0.jpg)
 ![Screenshot3](https://user-images.githubusercontent.com/55903466/88714601-aa148000-d13a-11ea-8c3e-bbddcd64f5e8.jpg)
 ![Screenshot4](https://user-images.githubusercontent.com/55903466/88714603-aaad1680-d13a-11ea-9c72-9ea06d0a4ff6.jpg)
-![Screenshot5](https://user-images.githubusercontent.com/55903466/88714607-abde4380-d13a-11ea-9db5-274039f1c4b8.jpg)
+![Screenshot5 (1)](https://user-images.githubusercontent.com/55903466/88795930-7713d000-d1be-11ea-8703-0b8bb0d0a0a1.jpg)
+![Screenshot5 (2)](https://user-images.githubusercontent.com/55903466/88795938-79762a00-d1be-11ea-86af-7591e2d8ca86.jpg)
