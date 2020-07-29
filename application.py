@@ -56,7 +56,7 @@ def lobby_redirect():
             chatrooms[username.lower()] = {"currentroom": "home", "allrooms": ["home"]}
             session["username"] = username.lower()
         else:
-            return "Username already taken"
+            return render_template("index.html", errormsg = "Username already taken")
         return redirect(url_for('lobby'))
     else:
         if 'username' in session:
