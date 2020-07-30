@@ -5,13 +5,13 @@ DerSchnack is a chatting web application similar to Slack created using Flask & 
 > Bonus: Schnack is a german word which means "to chat".
 
 # Features
-* ### I am Single. Page. Application
+* ### I am Single. Page. Application.
   With the help of Socket-IO, the server-side application listens and emits data to the client-side. This feature makes it a fast and responsive site. No need to reload the page for new messages to appear or to join a new chat room. **Real. Time. Chatting.**
 * ### Anonymity Protection & Display Name
   You don't need to sign up or link an email. Just enter a username and you are good to go. You can also change your username anytime. The username is remembered if you close the website and return to it later (Unless you log out).
 * ### Sending Messages
   Once in a channel, users would be able to send text messages to others in the channel. When a user sends a message, their display name and the timestamp of the message would be associated with the message. All users in the channel would then see the new message appear on their channel page. Sending and receiving messages does NOT require reloading the page.
-> Local Storage issue on Heroku. All messages get cleared every 24 hours. Working on it.
+> This website uses free dynos on heroku which means all the messages will be cleared every 24 hours.
 * ### Channel Creation
   A channel is called a chatroom. A chatroom can store a maximum of 100 messages on the server-side memory, the earlier ones are automatically deleted. You can create unlimited number of chatrooms (public/private) to continue chatting.
 * ### Private Chat room Support
