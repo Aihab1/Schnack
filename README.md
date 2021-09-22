@@ -1,8 +1,18 @@
-# DerSchnack Chatting Web Application
-DerSchnack is a chatting web application similar to Slack created using Flask & Socket-IO.
+<h1 align="center">
+  <a href="https://derschnack.herokuapp.com/">Derschnack</a>
+</h1>
+<p align="center">
+Derschnack is a chatting web application similar to Slack created using Flask & Socket-IO.
+</p>
 
-*Check out the website on heroku: https://derschnack.herokuapp.com/*
-> Bonus: Schnack is a german word which means "to chat".
+<p align="center">
+  <img src="https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
+  <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=darkgreen" />
+  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />
+</p>
+
+![Screenshot1](https://user-images.githubusercontent.com/55903466/88714582-a54fcc00-d13a-11ea-916b-9927cd3ff574.jpg)
 
 # Features
 * ### I am Single. Page. Application.
@@ -24,8 +34,9 @@ DerSchnack is a chatting web application similar to Slack created using Flask & 
 * ### Responsive Website
   The website is responsive and works well on all device resolutions.
  
+> Bonus: Schnack is a german word which means "to chat".
+
 # Some images from the site
-![Screenshot1](https://user-images.githubusercontent.com/55903466/88714582-a54fcc00-d13a-11ea-916b-9927cd3ff574.jpg)
 ![Screenshot2](https://user-images.githubusercontent.com/55903466/88714596-a8e35300-d13a-11ea-8cbd-6e2a1f6594d0.jpg)
 ![Screenshot3](https://user-images.githubusercontent.com/55903466/88714601-aa148000-d13a-11ea-8c3e-bbddcd64f5e8.jpg)
 ![Screenshot4](https://user-images.githubusercontent.com/55903466/88714603-aaad1680-d13a-11ea-9c72-9ea06d0a4ff6.jpg)
